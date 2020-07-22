@@ -109,13 +109,13 @@ state = {
           logged_in
           ?
           <NewRecipeForm
-          addNewRecipeToArray={this.addNewRecipeToArray}
-          user_id={user_id}
+            addNewRecipeToArray={this.addNewRecipeToArray}
+            user_id={user_id}
           />
           :
           null
         }
-
+        <p></p>
         <RecipeContainer 
           recipes={this.filteredRecipesArray()}  
           deleteRecipeFromArray={this.deleteRecipeFromArray}

@@ -17,9 +17,9 @@ let RecipeContainer = (props) => {
   return (
     <main>
       { 
-          <ul>
-            {arrayOfComponents}
-          </ul>
+        <ul>
+          {arrayOfComponents}
+        </ul>
       }
     </main>
   )

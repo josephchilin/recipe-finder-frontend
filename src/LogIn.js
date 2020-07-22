@@ -72,3 +72,6 @@ class LogIn extends Component {
 }
 
 export default LogIn;
+
+// component mount fetch get users
+// if else logic in handlesubmit for username
