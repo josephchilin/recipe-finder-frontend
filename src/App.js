@@ -13,9 +13,19 @@ state = {
   logged_in: false
 }
 
-  returnsAnArray = () => {
+  filteredRecipesArray = () => {
     let theArraytoReturn = this.state.recipeList
 
+    if (this.state.searchTerm !== ""){
+      theArraytoReturn = this.state.recipeList.filter((recipePOJO)=>{
+        return (
+          recipePOJO.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+        )
+      })
+    } else if (this.state.searchTerm === ""){
+      theArraytoReturn = []
+    }
+    
     return theArraytoReturn
   }
 
@@ -46,7 +56,7 @@ state = {
   }
   render () {
     const {searchTerm, logged_in} = this.state
-    // console.log(this.state)
+    console.log(this.state.searchTerm, "search")
 
     return (
       <div className="App">
@@ -67,7 +77,7 @@ state = {
         }
 
         <RecipeContainer 
-          recipes={this.returnsAnArray()}  
+          recipes={this.filteredRecipesArray()}  
         />
       </div>
     );
