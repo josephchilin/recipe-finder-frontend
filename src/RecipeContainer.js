@@ -2,7 +2,7 @@ import React from 'react'
 import RecipeItem from './RecipeItem'
 
 let RecipeContainer = (props) => {
-  // [{}] -> [<>]
+    
   let arrayOfComponents = props.recipes.map((recipePOJO) => {
     return <RecipeItem
     //   deleteRecipeFromArray={props.deleteRecipeFromArray}

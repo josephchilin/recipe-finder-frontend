@@ -7,7 +7,8 @@ class App extends React.Component {
  
 state = {
   recipeList: [],
-  searchTerm: ""
+  searchTerm: "",
+  logged_in: false
 }
 
 returnsAnArray = () => {
