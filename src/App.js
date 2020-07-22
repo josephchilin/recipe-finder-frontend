@@ -30,8 +30,8 @@ state = {
     })
   }
 
-  addNewRecipeToArray = (recipeInstance) => {
-    let copyOfList = [...this.state.recipeList, recipeInstance]
+  addNewRecipeToArray = (newRecipe) => {
+    let copyOfList = [...this.state.recipeList, newRecipe]
 
     this.setState({
       recipeList: copyOfList
@@ -45,7 +45,7 @@ state = {
 
   }
   render () {
-    const {searchTerm} = this.state
+    const {searchTerm, logged_in} = this.state
     // console.log(this.state)
 
     return (
@@ -55,9 +55,17 @@ state = {
           changeSearchTerm={this.changeSearchTerm}
         />
         <p></p>
+
+        {
+        logged_in
+        ?
         <NewRecipeForm
           addNewRecipeToArray={this.addNewRecipeToArray}
         />
+          :
+        "not logged in"
+        }
+
         <RecipeContainer 
           recipes={this.returnsAnArray()}  
         />

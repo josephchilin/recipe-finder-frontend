@@ -8,7 +8,7 @@ function RecipeHeader(props){
 
   return(
     <nav>
-      <h1>ReciPlease</h1>
+      <h1>ReciPls</h1>
       <div className="searchBar">
 
         <input 
