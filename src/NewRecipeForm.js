@@ -6,7 +6,14 @@ class NewRecipeForm extends Component {
         name: "",
         image_url: "",
         serving_size: "",
-        time: ""
+        time: "",
+        user_id: ""
+  }
+
+  componentDidMount(){
+    this.setState({
+      user_id: this.props.user_id
+    })
   }
 
   handleInput = (evt) => {
@@ -33,7 +40,7 @@ class NewRecipeForm extends Component {
         instruction: this.state.instruction,
         cuisine_id: 1,
         rating: null,
-        user_id: 1
+        user_id: this.state.user_id
 
       })
     })
@@ -90,7 +97,7 @@ class NewRecipeForm extends Component {
           type="url"
           name="image_url"
           id="f_image"
-          autoComplete="off"
+          // autoComplete="off"
           value={this.state.image_url}
           placeholder="Enter a URL for your recipe's image"
           size="50"
