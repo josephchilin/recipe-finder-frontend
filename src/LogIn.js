@@ -4,39 +4,60 @@ class LogIn extends Component {
 
   state={
     name: "",
-    password: ""
+    password: "",
+    userList: []
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3000/users")
+    .then(resp => resp.json())
+    // .then(console.log)
+    .then(arrayOfUsers => {
+      this.setState({
+        userList: arrayOfUsers
+      })
+    })
   }
 
   handleInput = (evt) => {
-
     this.setState({
       [evt.target.name]: evt.target.value
     })
-
   }
 
   handleSubmit = (evt) => {
     evt.preventDefault()
 
-    fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: this.state.name,
+    let {name, userList} = this.state
+
+    if (userList.some(user => user.name === name)){
+      let existing_user = userList.find(user => user.name === name)
+      console.log(existing_user, "NAME EXISTS")
+
+      this.props.updateUser(existing_user)
+      // console.log(userList)
+    } else {
+
+      fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+        })
       })
-    })
-    .then(r => r.json())
-    .then((user) => {
-      this.props.updateUser(user);
-    // console.log(user)
-    })
+      .then(r => r.json())
+      .then((user) => {
+        this.props.updateUser(user);
+      // console.log(user)
+      })
+    }
 
   }
 
   render() {
-    //   console.log(this.state)
+      console.log(this.state, "login state")
     return (
       <form onSubmit={this.handleSubmit}>
         <label className="login-label" htmlFor="f_name">Name: </label>
@@ -75,3 +96,4 @@ export default LogIn;
 
 // component mount fetch get users
 // if else logic in handlesubmit for username
+// callback function to update state in app.js
