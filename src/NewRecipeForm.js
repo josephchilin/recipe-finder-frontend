@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+// import NewIngredientForm from './NewIngredientForm'
 
 class NewRecipeForm extends Component {
 
   state={
-        name: "",
-        image_url: "",
-        serving_size: "",
-        time: "",
-        user_id: ""
+    name: "",
+    image_url: "",
+    serving_size: "",
+    time: "",
+    user_id: "",
+    instruction: "",
+    cuisine_id: 1
   }
 
   componentDidMount(){
@@ -25,6 +28,7 @@ class NewRecipeForm extends Component {
   }
 
   handleSubmit = (evt) => {
+    console.log(this.state, "STATE BEFORE FETCH")
     evt.preventDefault()
 
     fetch("http://localhost:3000/recipes", {
@@ -38,23 +42,29 @@ class NewRecipeForm extends Component {
         serving_size: this.state.serving_size,
         time: this.state.time,
         instruction: this.state.instruction,
-        cuisine_id: 1,
+        cuisine_id: this.state.cuisine_id,
         rating: null,
         user_id: this.state.user_id
-
       })
     })
     .then(r => r.json())
     .then((newRecipe) => {
+      console.log(newRecipe, "AFTER FETCH NEW RECIPE PROMISE")
       this.props.addNewRecipeToArray(newRecipe);
-    // console.log(newRecipe)
     })
 
   }
 
+  handleClick = (evt) => {
+    console.log("clicked")
+  }
+
   render() {
-    //   console.log(this.state)
+      // console.log(this.state, "RECIPE FORM STATE")
     return (
+
+      // <div className="recipe-form">
+
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="f_name">Name: </label>
         <input
@@ -119,6 +129,9 @@ class NewRecipeForm extends Component {
         <p></p>
         <input type="submit" value="Create A New Recipe" />
       </form>
+
+
+      // </div>
     );
   }
 
@@ -137,3 +150,12 @@ export default NewRecipeForm;
 
 //component did mount grab all cuisine names
 //make cuisine name drop down
+
+        {/* <div className="ingredient-form-container"> */}
+          {/* <button onClick={this.handleClick}>Add Ingredient</button> */}
+          {/* {  */}
+            {/* <ul> */}
+              {/* <NewIngredientForm /> */}
+            {/* </ul> */}
+          {/* } */}
+        {/* </div> */}

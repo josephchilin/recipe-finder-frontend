@@ -27,7 +27,7 @@ class LogIn extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-
+//===EXISTING USER OR CREATE NEW USER LOGIC
     let {name, userList} = this.state
 
     if (userList.some(user => user.name === name)){
@@ -57,7 +57,7 @@ class LogIn extends Component {
   }
 
   render() {
-      console.log(this.state, "login state")
+      // console.log(this.state, "login state")
     return (
       <form onSubmit={this.handleSubmit}>
         <label className="login-label" htmlFor="f_name">Name: </label>

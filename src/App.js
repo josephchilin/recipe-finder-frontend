@@ -76,10 +76,9 @@ state = {
   }
   render () {
     const {searchTerm, logged_in, user_name, user_id} = this.state
-    // console.log(this.state)
+    console.log(this.state, "APP STATE")
 
     return (
-
       <div className="App">
         <p></p>
         {
@@ -95,7 +94,7 @@ state = {
         {
           logged_in
           ?
-          <p>Welcome {user_name}!</p>
+          <p>Welcome {user_name}!</p> //ADD LOGOUT BUTTON AND FUNCTION TO SET STATE TO LOGGED OUT
           :
           null
         }
