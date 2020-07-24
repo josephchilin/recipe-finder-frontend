@@ -35,7 +35,7 @@ class RecipeItem extends React.Component {
 // debugger
         let {name, instruction, serving_size, time, image_url, user} = this.props.recipe
         let {user_id} = this.props
-        console.log(this.props, "are you logged in")
+        // console.log(this.props, "are you logged in")
         return(
             
             <li classname = "li-recipe">

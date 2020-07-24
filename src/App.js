@@ -76,7 +76,7 @@ state = {
   }
   render () {
     const {searchTerm, logged_in, user_name, user_id} = this.state
-    console.log(this.state, "APP STATE")
+    // console.log(this.state, "APP STATE")
 
     return (
       <div className="App">

@@ -11,7 +11,8 @@ class NewRecipeForm extends Component {
     user_id: "",
     instruction: "",
     cuisine_id: 5,
-    cuisineList: []
+    cuisineList: [],
+    new_recipe_object: ""
   }
 
   componentDidMount(){
@@ -37,8 +38,10 @@ class NewRecipeForm extends Component {
   }
 
   handleSubmit = (evt) => {
-    console.log(this.state, "STATE BEFORE FETCH")
+    // console.log(this.state, "STATE BEFORE FETCH")
     evt.preventDefault()
+
+    let {name, image_url, serving_size, time, instruction, cuisine_id, user_id} = this.state
 
     fetch("http://localhost:3000/recipes", {
       method: "POST",
@@ -47,26 +50,30 @@ class NewRecipeForm extends Component {
         "accept": "application/json"
       },
       body: JSON.stringify({
-        name: this.state.name,
-        image_url: this.state.image_url,
-        serving_size: this.state.serving_size,
-        time: this.state.time,
-        instruction: this.state.instruction,
-        cuisine_id: this.state.cuisine_id,
+        name: name,
+        image_url: image_url,
+        serving_size: serving_size,
+        time: time,
+        instruction: instruction,
+        cuisine_id: cuisine_id,
         rating: null,
-        user_id: this.state.user_id
+        user_id: user_id
       })
     })
     .then(r => r.json())
     .then((newRecipe) => {
       console.log(newRecipe, "AFTER FETCH NEW RECIPE PROMISE")
       this.props.addNewRecipeToArray(newRecipe);
+
+      this.setState({
+        new_recipe_object: newRecipe
+      })
     })
 
   }
 
   handleClick = (evt) => {
-    console.log("clicked")
+    // console.log("clicked")
   }
 
   render() {
