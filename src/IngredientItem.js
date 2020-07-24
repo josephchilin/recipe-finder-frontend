@@ -2,8 +2,24 @@ import React from 'react'
 
 class IngredientItem extends React.Component {
 
+    state={
+        ingredientList: [],
 
+    }
+    // let ingredient = ingredientList.find(ingredient => ingredient.id === SOME ID)
 
+    componentDidMount(){
+        fetch("http://localhost:3000/ingredients")
+        .then(resp => resp.json())
+        // .then(console.log)
+        .then(arrayOfIngredients => {
+          this.setState({
+            ingredientList: arrayOfIngredients
+          })
+        })
+        console.log (this.props)
+
+      }
 
 
     render(){
@@ -12,13 +28,10 @@ class IngredientItem extends React.Component {
         // let {name, instruction, serving_size, time, image_url, user} = this.props.recipe
         return(
             <li classname = "li-ingredient">
-                {/* <h3>{name}</h3>
-                <p><b>By:</b> {user.name}</p> 
-                <p><b>Yield:</b> {serving_size}</p>
-                <p><b>Time:</b> {time}</p>
-                <img src={image_url} alt={name} width="200"/>
-                <p><b>Ingredients:</b></p>
-                <p><b>Instructions:</b> {instruction}</p> */}
+                { 
+                
+                <p><b>Quantity:</b> {this.props.quantity}</p>
+                 }
             </li>
         )
     }

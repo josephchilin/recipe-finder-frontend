@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import NewIngredientForm from './NewIngredientForm'
+import NewIngredientForm from './NewIngredientForm'
 
 class NewRecipeForm extends Component {
 
@@ -12,7 +12,8 @@ class NewRecipeForm extends Component {
     instruction: "",
     cuisine_id: 5,
     cuisineList: [],
-    new_recipe_object: ""
+    new_recipe_object: "",
+    ingredient_counter: 0
   }
 
   componentDidMount(){
@@ -62,7 +63,7 @@ class NewRecipeForm extends Component {
     })
     .then(r => r.json())
     .then((newRecipe) => {
-      console.log(newRecipe, "AFTER FETCH NEW RECIPE PROMISE")
+      // console.log(newRecipe, "AFTER FETCH NEW RECIPE PROMISE")
       this.props.addNewRecipeToArray(newRecipe);
 
       this.setState({
@@ -73,14 +74,16 @@ class NewRecipeForm extends Component {
   }
 
   handleClick = (evt) => {
-    // console.log("clicked")
+    this.setState({
+      ingredient_counter: this.state.ingredient_counter +1
+    })
   }
 
   render() {
-      console.log(this.state, "RECIPE FORM STATE")
+      console.log(this.state.new_recipe_object, "RECIPE OBJECT INSIDE RECIPE FORM RENDER")
     return (
 
-      // <div className="recipe-form">
+      <div className="recipe-form">
 
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="f_name">Name: </label>
@@ -146,9 +149,20 @@ class NewRecipeForm extends Component {
         <p></p>
         <input type="submit" value="Create A New Recipe" />
       </form>
+      
+        <div className="ingredient-form-container">
+          <p></p>
+          <button onClick={this.handleClick}>New Ingredient</button>
+            {
+            <ul>
+              <NewIngredientForm 
+              recipe={this.state.new_recipe_object}
+              />
+            </ul>
+            }
+        </div>
 
-
-      // </div>
+      </div>
     );
   }
 
@@ -168,11 +182,3 @@ export default NewRecipeForm;
 //component did mount grab all cuisine names
 //make cuisine name drop down
 
-        // {/* <div className="ingredient-form-container"> */}
-        //   {/* <button onClick={this.handleClick}>Add Ingredient</button> */}
-        //   {/* {  */}
-        //     {/* <ul> */}
-        //       {/* <NewIngredientForm /> */}
-        //     {/* </ul> */}
-        //   {/* } */}
-        // {/* </div> */}

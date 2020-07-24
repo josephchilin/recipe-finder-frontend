@@ -9,9 +9,11 @@ class NewIngredientForm extends Component {
     ingredient_id: "",
     quantity: "",
     measurement_type: "",
+ 
   }
 
   componentDidMount() {
+    console.log(this.props, "INGREDIENT FORM PROPS")
     fetch("http://localhost:3000/ingredients")
     .then(resp => resp.json())
     // .then(console.log)
@@ -111,6 +113,7 @@ class NewIngredientForm extends Component {
 }
 
 export default NewIngredientForm;
+//state that counts number of ingredients, render ingredient form
 
 // t.integer "recipe_id"
 // t.integer "ingredient_id"
