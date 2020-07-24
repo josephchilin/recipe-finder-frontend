@@ -10,10 +10,19 @@ class NewRecipeForm extends Component {
     time: "",
     user_id: "",
     instruction: "",
-    cuisine_id: 1
+    cuisine_id: 5,
+    cuisineList: []
   }
 
   componentDidMount(){
+    fetch("http://localhost:3000/cuisines")
+    .then(resp => resp.json())
+    // .then(console.log)
+    .then(arrayOfCuisines => {
+      this.setState({
+        cuisineList: arrayOfCuisines
+      })
+    })
     this.setState({
       user_id: this.props.user_id
     })
@@ -35,6 +44,7 @@ class NewRecipeForm extends Component {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        "accept": "application/json"
       },
       body: JSON.stringify({
         name: this.state.name,
@@ -60,7 +70,7 @@ class NewRecipeForm extends Component {
   }
 
   render() {
-      // console.log(this.state, "RECIPE FORM STATE")
+      console.log(this.state, "RECIPE FORM STATE")
     return (
 
       // <div className="recipe-form">
@@ -151,11 +161,11 @@ export default NewRecipeForm;
 //component did mount grab all cuisine names
 //make cuisine name drop down
 
-        {/* <div className="ingredient-form-container"> */}
-          {/* <button onClick={this.handleClick}>Add Ingredient</button> */}
-          {/* {  */}
-            {/* <ul> */}
-              {/* <NewIngredientForm /> */}
-            {/* </ul> */}
-          {/* } */}
-        {/* </div> */}
+        // {/* <div className="ingredient-form-container"> */}
+        //   {/* <button onClick={this.handleClick}>Add Ingredient</button> */}
+        //   {/* {  */}
+        //     {/* <ul> */}
+        //       {/* <NewIngredientForm /> */}
+        //     {/* </ul> */}
+        //   {/* } */}
+        // {/* </div> */}
