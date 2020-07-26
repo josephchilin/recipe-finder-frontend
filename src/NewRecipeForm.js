@@ -80,22 +80,8 @@ class NewRecipeForm extends Component {
     })
   }
 
-  // form_list = () => {
-  //   let ingredient_times = this.state.ingredient_counter
-  //         for (let index = 0; index < ingredient_times; index++) {
-            
-  //           <NewIngredientForm 
-  //           recipe={this.state.new_recipe_object}
-  //           />
-            
-  //         }
-
-  // }
   render() {
       console.log(this.state.new_recipe_object, "RECIPE OBJECT INSIDE RECIPE FORM RENDER")
-
-     
-
 
     return (
 
@@ -165,25 +151,16 @@ class NewRecipeForm extends Component {
         <p></p>
         <input type="submit" value="Create A New Recipe" />
       </form>
-      
+        <p></p>
         <div className="ingredient-form-container">
-          <p></p>
-            
-              <ul>
-
-              {this.state.ingredient_counter.map(item => {
-
-               return <NewIngredientForm 
-                recipe={this.state.new_recipe_object}
-                />
-
-              })}
-      
-            </ul>
-
-  
-
             <button onClick={this.handleClick}>New Ingredient</button>
+              <ul>
+                {this.state.ingredient_counter.map(item => {
+                  return <NewIngredientForm 
+                    recipe={this.state.new_recipe_object}
+                    />
+                })}
+              </ul>
         </div>
 
       </div>

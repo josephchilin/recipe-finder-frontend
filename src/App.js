@@ -129,3 +129,11 @@ state = {
 }
 
 export default App;
+
+
+// clean up ingredient iteration in recipe component
+// clean up UX for new ingredient in new recipe form
+    //make sure new recipe form passes down recipe id to new ingredient form
+// make routes
+
+// filter by ingredient
