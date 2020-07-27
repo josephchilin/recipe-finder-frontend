@@ -158,6 +158,7 @@ class NewRecipeForm extends Component {
                 {this.state.ingredient_counter.map(item => {
                   return <NewIngredientForm 
                     recipe={this.state.new_recipe_object}
+                    updateRecipeArray={this.props.updateRecipeArray}
                     />
                 })}
               </ul>

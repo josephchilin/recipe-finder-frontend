@@ -8,7 +8,7 @@ import {NavLink, Redirect} from 'react-router-dom'
 // }
 
 const NavBar = (props) => {
-    console.log(props, "NAVBAR PROPS")
+    // console.log(props, "NAVBAR PROPS")
   return(
     <ul className="nav">
       <li>

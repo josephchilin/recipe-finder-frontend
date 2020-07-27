@@ -13,7 +13,7 @@ class NewIngredientForm extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props, "INGREDIENT FORM PROPS")
+    // console.log(this.props, "INGREDIENT FORM PROPS")
     fetch("http://localhost:3000/ingredients")
     .then(resp => resp.json())
     // .then(console.log)
@@ -42,7 +42,7 @@ class NewIngredientForm extends Component {
 
     let new_ingredient = ingredientList.find(ingredient => ingredient.name === name.toLowerCase())
     let new_measurement_type = measurement_type.toLowerCase()
-    console.log(new_ingredient.id, "NEW INGREDIENT ID")
+    // console.log(new_ingredient.id, "NEW INGREDIENT ID")
 
     fetch("http://localhost:3000/recipe_ingredients", {
       method: "POST",
@@ -58,8 +58,8 @@ class NewIngredientForm extends Component {
     })
     .then(r => r.json())
     .then((newIngredient) => {
-    //   this.props.addnewIngredientToArray(newIngredient);
-    console.log(newIngredient, "FETCH POST NEW INGREDIENT")
+      this.props.updateRecipeArray();
+    // console.log(newIngredient, "FETCH POST NEW INGREDIENT")
     })
 
   }

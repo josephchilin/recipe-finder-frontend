@@ -47,6 +47,17 @@ state = {
     })
   }
 
+  updateRecipeArray = () => {
+    fetch("http://localhost:3000/recipes")
+    .then(resp => resp.json())
+    // .then(console.log)
+    .then(arrayOfRecipes => {
+      this.setState({
+        recipeList: arrayOfRecipes
+      })
+    })
+  }
+
   addNewRecipeToArray = (newRecipe) => {
     let copyOfList = [...this.state.recipeList, newRecipe]
 
@@ -82,6 +93,7 @@ state = {
     const {user_id} = this.state
     return <NewRecipeForm 
     addNewRecipeToArray={this.addNewRecipeToArray}
+    updateRecipeArray={this.updateRecipeArray}
     user_id={user_id}
     />
   }
