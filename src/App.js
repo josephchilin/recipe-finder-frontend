@@ -101,15 +101,11 @@ state = {
         logged_in={logged_in}
         />
         <p></p>
-        {/* {
-          logged_in
-          ?
-          null
-          :
-          <LogIn
-          updateUser={this.updateUser}
-          />
-        } */}
+        <Switch>
+          <Route path='/newrecipe' render={this.renderNewRecipeForm} />
+          <Route path='/login' render={this.renderLogIn} />
+        </Switch>
+
         <p></p>
         {
           logged_in
@@ -123,17 +119,6 @@ state = {
           searchTerm={searchTerm}
           changeSearchTerm={this.changeSearchTerm}
         />
-        {/* <p></p>
-        {
-          logged_in
-          ?
-          <NewRecipeForm
-            addNewRecipeToArray={this.addNewRecipeToArray}
-            user_id={user_id}
-          />
-          :
-          null
-        } */}
         <p></p>
         <RecipeContainer 
           recipes={this.filteredRecipesArray()}  
@@ -141,10 +126,6 @@ state = {
           logged_in={logged_in}
           user_id={user_id}
         />
-        <Switch>
-          <Route path='/newrecipe' render={this.renderNewRecipeForm} />
-          <Route path='/login' render={this.renderLogIn} />
-        </Switch>
       </div>
     );
   } 

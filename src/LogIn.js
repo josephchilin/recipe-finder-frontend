@@ -53,7 +53,6 @@ class LogIn extends Component {
       // console.log(user)
       })
     }
-
   }
 
   render() {

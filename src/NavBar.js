@@ -8,22 +8,43 @@ const NavBar = (props) => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myrecipes">My Recipes</NavLink>
-      </li>
         {
-        props.logged_in
-        ?
-        <li>
-        <NavLink to="/newrecipe">Add New Recipe</NavLink>
-        </li>
-        :
-        null
+            props.logged_in
+                ?
+                null
+                :
+                <li>
+                <NavLink to="/login">Login</NavLink>
+                </li>
         }
 
+        {
+            props.logged_in
+                ?
+                <li>
+                <NavLink to="/myrecipes">My Recipes</NavLink>
+                </li>
+                :
+                null
+        }
+        {
+            props.logged_in
+                ?
+                <li>
+                <NavLink to="/newrecipe">Add New Recipe</NavLink>
+                </li>
+                :
+                null
+        }
+                {
+            props.logged_in
+                ?
+                <li>
+                <NavLink to="/logout">Log Out</NavLink>
+                </li>
+                :
+                null
+        }
     </ul>
   )
 };
