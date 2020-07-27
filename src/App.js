@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import RecipeHeader from './RecipeHeader'
+// import RecipeHeader from './RecipeHeader'
 import SearchBar from './SearchBar'
 import RecipeContainer from './RecipeContainer'
 import NewRecipeForm from './NewRecipeForm'

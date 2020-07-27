@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
+import {NavLink, Redirect} from 'react-router-dom'
 
 
 // let handleClick = (evt) => {
@@ -17,7 +17,7 @@ const NavBar = (props) => {
         {
             props.logged_in
                 ?
-                null
+                <Redirect to="/home" />
                 :
                 <li>
                 <NavLink to="/login">Login</NavLink>
