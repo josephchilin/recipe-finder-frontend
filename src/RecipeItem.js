@@ -3,21 +3,18 @@ import IngredientItem from './IngredientItem'
 import IngredientContainer from './IngredientContainer'
 
 class RecipeItem extends React.Component {
-
+    state = {
+        ingredientlist: [],
+    }
 
     componentDidMount(){
-        // this.renderIngredientArray
-        // let ingredientArray = () => {
-            // let ingredientArray = this.props.recipe.recipe_ingredients.map((recipeIngredientPOJO) => {  
-            //     return     
-            //     <IngredientItem
-            //       recipe_ingredient={recipeIngredientPOJO}
-            //       key={recipeIngredientPOJO.id}
-            //     />
-            //   })
-
-        // }
-
+        fetch("http://localhost:3000/ingredients")
+        .then(resp => resp.json())
+        .then(arrayOfIngredients => {
+          this.setState({
+            ingredientList: arrayOfIngredients
+          })
+        })
     }
 
 
@@ -43,11 +40,12 @@ class RecipeItem extends React.Component {
         let renderIngredientArray = this.props.recipe.recipe_ingredients.map((recipeIngredientPOJO) => {  
             return  <IngredientItem
               recipe_ingredient={recipeIngredientPOJO}
+              ingredientList={this.state.ingredientList}
               key={recipeIngredientPOJO.id}
             />
           })
 
-        console.log(this.props, "RECIPE ITEM PROPS")
+        // console.log(this.props, "RECIPE ITEM PROPS")
         return(
             
 
