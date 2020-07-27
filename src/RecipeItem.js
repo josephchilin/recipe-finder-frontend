@@ -1,6 +1,6 @@
 import React from 'react'
 import IngredientItem from './IngredientItem'
-import IngredientContainer from './IngredientContainer'
+// import IngredientContainer from './IngredientContainer'
 
 class RecipeItem extends React.Component {
     state = {
@@ -49,19 +49,22 @@ class RecipeItem extends React.Component {
         return(
             
 
-            <li classname = "li-recipe">
+            <li className = "li-recipe">
                 <h3>{name}</h3>
                 <p><b>By:</b> {user.name}</p> 
                 <p><b>Yield:</b> {serving_size}</p>
                 <p><b>Cooking Time:</b> {time}</p>
                 <img src={image_url} alt={name} width="200"/>
-                <p><b>Ingredients:</b> {
+                <p></p><b>Ingredients:</b><p></p> {
                     // <IngredientItem />
-                    renderIngredientArray
+                    // <ul className="ingredient-list">
+                        renderIngredientArray
+                    // </ul>
+                    
                     // <IngredientContainer 
       
                     // />
-                    }</p>
+                    }
                 <p><b>Instructions:</b> {instruction}</p>
                 {
                 // this.props.logged_in
