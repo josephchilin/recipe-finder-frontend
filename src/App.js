@@ -4,6 +4,8 @@ import RecipeHeader from './RecipeHeader'
 import RecipeContainer from './RecipeContainer'
 import NewRecipeForm from './NewRecipeForm'
 import LogIn from './LogIn'
+import NavBar from './NavBar'
+import {Switch, Route } from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -74,14 +76,32 @@ state = {
       logged_in: true
     })
   }
+  renderNewRecipeForm = (routerProps) => {
+    const {user_id} = this.state
+    return <NewRecipeForm 
+    addNewRecipeToArray={this.addNewRecipeToArray}
+    user_id={user_id}
+    />
+  }
+
+  renderLogIn = (routerProps) => {
+
+    return <LogIn
+    updateUser={this.updateUser}
+    />
+
+  }
   render () {
     const {searchTerm, logged_in, user_name, user_id} = this.state
     // console.log(this.state, "APP STATE")
 
     return (
       <div className="App">
+        <NavBar 
+        logged_in={logged_in}
+        />
         <p></p>
-        {
+        {/* {
           logged_in
           ?
           null
@@ -89,7 +109,7 @@ state = {
           <LogIn
           updateUser={this.updateUser}
           />
-        }
+        } */}
         <p></p>
         {
           logged_in
@@ -103,7 +123,7 @@ state = {
           searchTerm={searchTerm}
           changeSearchTerm={this.changeSearchTerm}
         />
-        <p></p>
+        {/* <p></p>
         {
           logged_in
           ?
@@ -113,7 +133,7 @@ state = {
           />
           :
           null
-        }
+        } */}
         <p></p>
         <RecipeContainer 
           recipes={this.filteredRecipesArray()}  
@@ -121,6 +141,10 @@ state = {
           logged_in={logged_in}
           user_id={user_id}
         />
+        <Switch>
+          <Route path='/newrecipe' render={this.renderNewRecipeForm} />
+          <Route path='/login' render={this.renderLogIn} />
+        </Switch>
       </div>
     );
   } 
