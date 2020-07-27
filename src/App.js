@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import RecipeHeader from './RecipeHeader'
+import SearchBar from './SearchBar'
 import RecipeContainer from './RecipeContainer'
 import NewRecipeForm from './NewRecipeForm'
 import LogIn from './LogIn'
 import NavBar from './NavBar'
-import {Switch, Route } from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -91,6 +93,21 @@ state = {
     />
 
   }
+
+  logOut = () => {
+    this.setState({
+      logged_in: false
+    })
+  }
+
+  renderHome = (routerProps) => {
+    const {searchTerm} = this.state
+    return <SearchBar 
+    searchTerm={searchTerm}
+    changeSearchTerm={this.changeSearchTerm}
+    />
+  }
+
   render () {
     const {searchTerm, logged_in, user_name, user_id} = this.state
     // console.log(this.state, "APP STATE")
@@ -99,13 +116,10 @@ state = {
       <div className="App">
         <NavBar 
         logged_in={logged_in}
+        logOut={this.logOut}
         />
         <p></p>
-        <Switch>
-          <Route path='/newrecipe' render={this.renderNewRecipeForm} />
-          <Route path='/login' render={this.renderLogIn} />
-        </Switch>
-
+        <h1>ReciPls</h1>
         <p></p>
         {
           logged_in
@@ -114,11 +128,22 @@ state = {
           :
           null
         }
+        <Switch>
+          <Route path='/newrecipe' render={this.renderNewRecipeForm} />
+          <Route path='/login' render={this.renderLogIn} />
+          <Route path='/home' render={this.renderHome} />
+        </Switch>
+
         <p></p>
-        <RecipeHeader 
+        {/* <RecipeHeader 
           searchTerm={searchTerm}
           changeSearchTerm={this.changeSearchTerm}
         />
+        <p></p> */}
+        {/* <SearchBar 
+          searchTerm={searchTerm}
+          changeSearchTerm={this.changeSearchTerm}
+        /> */}
         <p></p>
         <RecipeContainer 
           recipes={this.filteredRecipesArray()}  
@@ -133,7 +158,7 @@ state = {
 
 }
 
-export default App;
+export default withRouter(App);
 
 
 // clean up ingredient iteration in recipe component

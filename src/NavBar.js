@@ -1,12 +1,18 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 
+
+// let handleClick = (evt) => {
+//     // evt.preventDefault()
+//     console.log("LOG OUT CLICK")
+// }
+
 const NavBar = (props) => {
-    console.log(props.logged_in, "NAVBAR PROPS")
+    console.log(props, "NAVBAR PROPS")
   return(
     <ul className="nav">
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/home">Home</NavLink>
       </li>
         {
             props.logged_in
@@ -36,15 +42,15 @@ const NavBar = (props) => {
                 :
                 null
         }
-                {
+                {/* {
             props.logged_in
                 ?
                 <li>
-                <NavLink to="/logout">Log Out</NavLink>
+                <button onClick={handleClick()}>Log Out</button>
                 </li>
                 :
                 null
-        }
+        } */}
     </ul>
   )
 };

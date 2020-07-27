@@ -22,6 +22,9 @@ class NewIngredientForm extends Component {
         ingredientList: arrayOfIngredients
       })
     })
+    // this.setState({
+    //   recipe_id: this.props.id
+    // })
   }
 
   handleInput = (evt) => {
@@ -35,11 +38,11 @@ class NewIngredientForm extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
 
-    let {name, ingredientList, quantity, measurement_type, recipe_id} = this.state
+    let {name, ingredientList, quantity, measurement_type} = this.state
 
     let new_ingredient = ingredientList.find(ingredient => ingredient.name === name.toLowerCase())
     let new_measurement_type = measurement_type.toLowerCase()
-    // console.log(new_ingredient.id, "NEW INGREDIENT ID")
+    console.log(new_ingredient.id, "NEW INGREDIENT ID")
 
     fetch("http://localhost:3000/recipe_ingredients", {
       method: "POST",
@@ -47,7 +50,7 @@ class NewIngredientForm extends Component {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        recipe_id: recipe_id,
+        recipe_id: this.props.recipe.id,
         ingredient_id: new_ingredient.id,
         quantity: quantity,
         measurement_type: new_measurement_type,
@@ -62,7 +65,7 @@ class NewIngredientForm extends Component {
   }
 
   render() {
-    //   console.log(this.state)
+      // console.log(this.props, "INGREDIENT FORM PROPS")
     return (
 
       <div className="ingredient-form">

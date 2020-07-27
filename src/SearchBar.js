@@ -1,6 +1,6 @@
 import React from 'react'
 
-function RecipeHeader(props){
+function SearchBar(props){
 
   let handleType = (evt) => {
     props.changeSearchTerm(evt.target.value)
@@ -23,4 +23,4 @@ function RecipeHeader(props){
   )
 }
 
-export default RecipeHeader
+export default SearchBar
