@@ -17,7 +17,7 @@ let RecipeContainer = (props) => {
   return (
     <main>
       { 
-        <ul>
+        <ul className="ul-recipe">
           {arrayOfComponents}
         </ul>
       }

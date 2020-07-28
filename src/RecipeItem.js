@@ -49,33 +49,35 @@ class RecipeItem extends React.Component {
         return(
             
 
-            <li className = "li-recipe">
-                <h3>{name}</h3>
-                <p><b>By:</b> {user.name}</p> 
-                <p><b>Yield:</b> {serving_size}</p>
-                <p><b>Cooking Time:</b> {time}</p>
-                <img src={image_url} alt={name} width="200"/>
-                <p></p><b>Ingredients:</b><p></p> {
-                    // <IngredientItem />
-                    // <ul className="ingredient-list">
-                        renderIngredientArray
-                    // </ul>
-                    
-                    // <IngredientContainer 
-      
-                    // />
+            <li className="li-recipe">
+                <div className="recipe-item">
+                    <h2>{name}</h2>
+                        <div className="recipe-header">
+                            <p><b>By:</b> {user.name} <b>Yield:</b> {serving_size} <b>Cooking Time:</b> {time}</p> 
+                        </div>
+                        <div className="recipe-img-ing">
+                            <img src={image_url} alt={name} width="200"/>
+                                  <p></p>
+                              <div className="ingredient-container">
+                                <h3>Ingredients:</h3>
+                                    <p></p>
+                                <ul className="ul-recipe"> 
+                                {renderIngredientArray}
+                                </ul>
+                              </div>
+                        </div>
+                    <p><b>Instructions:</b> {instruction}</p>
+                    {
+                    // this.props.logged_in
+                    user.id === user_id
+                        ?
+                        <button className="form-button" onClick={this.handleDelete}>
+                            Delete this Recipe
+                        </button>
+                        :
+                        null
                     }
-                <p><b>Instructions:</b> {instruction}</p>
-                {
-                // this.props.logged_in
-                user.id === user_id
-                    ?
-                    <button className="form-button" onClick={this.handleDelete}>
-                        Delete this Recipe
-                    </button>
-                    :
-                    null
-                }
+                </div>
             </li>
         )
     }
