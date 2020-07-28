@@ -70,7 +70,7 @@ class RecipeItem extends React.Component {
                 // this.props.logged_in
                 user.id === user_id
                     ?
-                    <button className="delete-button" onClick={this.handleDelete}>
+                    <button className="form-button" onClick={this.handleDelete}>
                         Delete this Recipe
                     </button>
                     :
