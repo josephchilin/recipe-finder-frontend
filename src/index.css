@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FFECC2;
+  background-color: #FEF9EF;
 }
 
 code {
@@ -27,7 +27,7 @@ ul.nav {
   overflow: hidden;
   display: flex;
   justify-content: space-evenly;
-  background-color: #E1440D;
+  background-color: #F79A78;
 }
 
 ul.nav li {
@@ -44,7 +44,7 @@ ul.nav li a {
 }
 
 ul.nav li a:hover {
-  background-color: #9A3009;
+  background-color: #F46F3E;
 }
 
 button {
@@ -63,13 +63,17 @@ button {
 }
 
 .li-recipe {
-  width: 600px;
-  background-color: #FEF9EF; 
-  /* display: flex;
+  width: auto;
+  background-color: #FCEAC5; 
+  display: flex;
   align-items: center;
-  justify-content: center;  */
-  margin: 5px;     
-  padding: 20px 25px;
+  justify-content: center; 
+  /* margin: 20px;      */
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 25px 25px;
 }
 
 .ul-recipe {
@@ -78,18 +82,21 @@ button {
   justify-content: center;
   text-align: left;
   /* padding-left: 10px; */
+  margin-left: 0px;
+  padding: 0px;
 }
 
 .recipe-header {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* justify-content: space-evenly; */
   /* padding: 50px; */
 }
 
 .recipe-img-ing {
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
 }
 
@@ -99,10 +106,25 @@ button {
 }
 
 .recipe-item {
-    align-items: center;
+  align-items: center;
   justify-content: center;
 }
 
 h2 {
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.app-title {
+  color: #E1440D
+}
+
+.ingredients-name {
+  padding: 0px;
 }

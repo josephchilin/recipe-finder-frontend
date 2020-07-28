@@ -131,7 +131,7 @@ state = {
         logOut={this.logOut}
         />
         <p></p>
-        <h1>ReciPls</h1>
+        <h1 className="app-title">ReciPLS</h1>
         <p></p>
         {
           logged_in

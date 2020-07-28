@@ -51,22 +51,27 @@ class RecipeItem extends React.Component {
 
             <li className="li-recipe">
                 <div className="recipe-item">
-                    <h2>{name}</h2>
+                    <div className="recipe-name">
+                        <h2>{name}</h2>
+                    </div>
                         <div className="recipe-header">
-                            <p><b>By:</b> {user.name} <b>Yield:</b> {serving_size} <b>Cooking Time:</b> {time}</p> 
+                            <p><b>By:</b> {user.name} <b>Yield:</b> {serving_size} <b>Cooking Time:</b> {time} minutes</p> 
                         </div>
                         <div className="recipe-img-ing">
-                            <img src={image_url} alt={name} width="200"/>
-                                  <p></p>
+                            <img src={image_url} alt={name} width="400"/>
                               <div className="ingredient-container">
-                                <h3>Ingredients:</h3>
+                                  <div className="ingredients-name">
+                                    <h3>Ingredients:</h3>
+                                  </div>
                                     <p></p>
                                 <ul className="ul-recipe"> 
                                 {renderIngredientArray}
                                 </ul>
                               </div>
                         </div>
-                    <p><b>Instructions:</b> {instruction}</p>
+                        <div className="recipe-instructions">
+                            <p><b>Instructions:</b> {instruction}</p>
+                        </div>
                     {
                     // this.props.logged_in
                     user.id === user_id
