@@ -55,7 +55,7 @@ class RecipeItem extends React.Component {
                         <h2>{name}</h2>
                     </div>
                         <div className="recipe-header">
-                            <p><b>By:</b> {user.name} <b>Yield:</b> {serving_size} <b>Cooking Time:</b> {time} minutes</p> 
+                            <p><b>By:</b> {user.name} <p></p><b>Yield:</b> {serving_size} <b>Cooking Time:</b> {time} minutes</p> 
                         </div>
                         <div className="recipe-img-ing">
                             <img src={image_url} alt={name} width="400"/>

@@ -96,6 +96,7 @@ button {
   justify-content: center;
   /* justify-content: space-evenly; */
   /* padding: 50px; */
+  text-align: center;
 }
 
 .recipe-img-ing {
