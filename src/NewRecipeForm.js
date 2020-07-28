@@ -84,86 +84,88 @@ class NewRecipeForm extends Component {
       console.log(this.state.new_recipe_object, "RECIPE OBJECT INSIDE RECIPE FORM RENDER")
 
     return (
+      <div className="recipe-form-container">
+        
+        <div className="recipe-form">
 
-      <div className="recipe-form">
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="f_name">Name: </label>
+          <input
+            type="text"
+            name="name"
+            id="f_name"
+            autoComplete="off"
+            value={this.state.name}
+            placeholder="What is your recipe called?"
+            size="59"
+            onChange={this.handleInput}
+          />
+          <p></p>
+          <label htmlFor="f_yield">Yield: </label>
+          <input
+            type="integer"
+            name="serving_size"
+            id="f_yield"
+            autoComplete="off"
+            value={this.state.serving_size}
+            placeholder="How many servings does your recipe make?"
+            size="60"
+            onChange={this.handleInput}
+          />
+          <p></p>
+          <label htmlFor="f_time">Cooking Time: </label>
+          <input
+            type="integer"
+            name="time"
+            id="f_time"
+            autoComplete="off"
+            value={this.state.time}
+            placeholder="How long does it take to cook your recipe in minutes?"
+            size="51"
+            onChange={this.handleInput}
+          />
+          <p></p>
+          <label htmlFor="f_image">Image: </label>
+          <input
+            type="url"
+            name="image_url"
+            id="f_image"
+            // autoComplete="off"
+            value={this.state.image_url}
+            placeholder="Enter a URL for your recipe's image"
+            size="59"
+            onChange={this.handleInput}
+          />
+          <p></p>
+          <label htmlFor="f_instruction">Instructions: </label>
+          <input
+            className="instruction-form"
+            type="text"
+            name="instruction"
+            id="f_instruction"
+            autoComplete="off"
+            value={this.state.instruction}
+            placeholder="How do you cook your recipe?"
+            size="53"
+            onChange={this.handleInput}
+          />
+          <p></p>
+          <input className="form-button" type="submit" value="Create New Recipe" />
+        </form>
+          <p></p>
+          <div className="ingredient-form-container">
+              <button className="form-button" onClick={this.handleClick}>New Ingredient</button>
+                <ul>
+                  {this.state.ingredient_counter.map(item => {
+                    return <NewIngredientForm 
+                      recipe={this.state.new_recipe_object}
+                      updateRecipeArray={this.props.updateRecipeArray}
+                      />
+                  })}
+                </ul>
+          </div>
 
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="f_name">Name: </label>
-        <input
-          type="text"
-          name="name"
-          id="f_name"
-          autoComplete="off"
-          value={this.state.name}
-          placeholder="What is your recipe called?"
-          size="50"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <label htmlFor="f_yield">Yield: </label>
-        <input
-          type="integer"
-          name="serving_size"
-          id="f_yield"
-          autoComplete="off"
-          value={this.state.serving_size}
-          placeholder="How many servings does your recipe make?"
-          size="50"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <label htmlFor="f_time">Cooking Time: </label>
-        <input
-          type="integer"
-          name="time"
-          id="f_time"
-          autoComplete="off"
-          value={this.state.time}
-          placeholder="How long does it take to cook your recipe in minutes?"
-          size="50"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <label htmlFor="f_image">Image: </label>
-        <input
-          type="url"
-          name="image_url"
-          id="f_image"
-          // autoComplete="off"
-          value={this.state.image_url}
-          placeholder="Enter a URL for your recipe's image"
-          size="50"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <label htmlFor="f_instruction">Instructions: </label>
-        <input
-          className="instruction-form"
-          type="text"
-          name="instruction"
-          id="f_instruction"
-          autoComplete="off"
-          value={this.state.instruction}
-          placeholder="How do you cook your recipe?"
-          size="50"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <input className="form-button" type="submit" value="Create A New Recipe" />
-      </form>
-        <p></p>
-        <div className="ingredient-form-container">
-            <button className="form-button" onClick={this.handleClick}>New Ingredient</button>
-              <ul>
-                {this.state.ingredient_counter.map(item => {
-                  return <NewIngredientForm 
-                    recipe={this.state.new_recipe_object}
-                    updateRecipeArray={this.props.updateRecipeArray}
-                    />
-                })}
-              </ul>
         </div>
-
       </div>
     );
   }

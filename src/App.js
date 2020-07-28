@@ -136,7 +136,7 @@ state = {
         {
           logged_in
           ?
-          <p>Welcome {user_name}!</p> //ADD LOGOUT BUTTON AND FUNCTION TO SET STATE TO LOGGED OUT
+          <p><b>Welcome {user_name}!</b></p> //ADD LOGOUT BUTTON AND FUNCTION TO SET STATE TO LOGGED OUT
           :
           null
         }

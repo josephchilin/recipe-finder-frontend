@@ -48,18 +48,21 @@ ul.nav li a:hover {
 }
 
 button {
-  background-color: #E1440D;
+  background-color: #F46F3E;
   border: none;
   padding: 5px 10px;
   color: white
 }
 
 .form-button {
-  background-color: #E1440D;
+  background-color: #F46F3E;
   border: none;
   padding: 5px 10px;
   color: white;
-  cursor: pointer
+  cursor: pointer;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;  */
 }
 
 .li-recipe {
@@ -122,9 +125,26 @@ h3 {
 }
 
 .app-title {
-  color: #E1440D
+  color: #F46F3E
 }
 
 .ingredients-name {
   padding: 0px;
+}
+
+.recipe-form {
+  /* text-align: left; */
+}
+
+.recipe-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredient-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20x;
 }

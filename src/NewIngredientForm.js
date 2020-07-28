@@ -69,7 +69,7 @@ class NewIngredientForm extends Component {
     return (
 
       <div className="ingredient-form">
-
+        <p></p>
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="f_ingredient_name">Name: </label>
         <input
@@ -79,7 +79,7 @@ class NewIngredientForm extends Component {
           autoComplete="off"
           value={this.state.name}
           placeholder="What is your ingredient called?"
-          size="50"
+          size="59"
           onChange={this.handleInput}
         />
         <p></p>
@@ -91,7 +91,7 @@ class NewIngredientForm extends Component {
           autoComplete="off"
           value={this.state.quantity}
           placeholder="How much of this ingredient is needed?"
-          size="50"
+          size="57"
           onChange={this.handleInput}
         />
         <p></p>
@@ -103,11 +103,12 @@ class NewIngredientForm extends Component {
           autoComplete="off"
           value={this.state.measurement_type}
           placeholder="What is the measurement type? (ex. cups, ounces)"
-          size="50"
+          size="46"
           onChange={this.handleInput}
         />
         <p></p>
-        <input className="form-button" type="submit" value="Add A New Ingredient" />
+        <input className="form-button" type="submit" value="Add New Ingredient" />
+        <p></p>
       </form>
       </div>
     );
