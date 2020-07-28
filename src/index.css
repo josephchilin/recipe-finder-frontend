@@ -60,9 +60,10 @@ button {
   padding: 5px 10px;
   color: white;
   cursor: pointer;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;  */
+}
+
+.form-button:hover {
+  background-color: #E7480D;
 }
 
 .li-recipe {

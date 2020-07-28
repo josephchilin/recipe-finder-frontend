@@ -10,7 +10,7 @@ class NewRecipeForm extends Component {
     time: "",
     user_id: "",
     instruction: "",
-    cuisine_id: 5,
+    cuisine_id: 9,
     cuisineList: [],
     new_recipe_object: "",
     ingredient_counter: []
