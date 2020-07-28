@@ -6,6 +6,7 @@ import RecipeContainer from './RecipeContainer'
 import NewRecipeForm from './NewRecipeForm'
 import LogIn from './LogIn'
 import NavBar from './NavBar'
+import MyRecipes from './MyRecipes'
 import {Switch, Route} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 
@@ -20,8 +21,23 @@ state = {
   user_name: ""
 }
 
+componentDidMount() {
+  fetch("http://localhost:3000/recipes")
+  .then(resp => resp.json())
+  // .then(console.log)
+  .then(arrayOfRecipes => {
+    this.setState({
+      recipeList: arrayOfRecipes
+    })
+  })
+}
+
   filteredRecipesArray = () => {
     let theArraytoReturn = this.state.recipeList
+
+    // if(routerProps.location.pathname==="/myrecipes"){
+
+    // }
 
     if (this.state.searchTerm !== ""){
       theArraytoReturn = this.state.recipeList.filter((recipePOJO)=>{
@@ -36,16 +52,35 @@ state = {
     return theArraytoReturn
   }
 
-  componentDidMount() {
-    fetch("http://localhost:3000/recipes")
-    .then(resp => resp.json())
-    // .then(console.log)
-    .then(arrayOfRecipes => {
-      this.setState({
-        recipeList: arrayOfRecipes
-      })
-    })
+
+  // myRecipesArray = () => {
+  //   let theArraytoReturn = this.state.recipeList
+  //   let loggedInUserID = this.state.user_id
+
+  //   console.log(loggedInUserID, "MY RECIPES ID")
+  //   // if (this.state.searchTerm !== ""){
+  //   //   theArraytoReturn = this.state.recipeList.filter((recipePOJO)=>{
+  //   //     return (
+  //   //       recipePOJO.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+  //   //     )
+  //   //   })
+  //   // } else if (this.state.searchTerm === ""){
+  //   //   theArraytoReturn = []
+  //   // }
+    
+  //   // return theArraytoReturn
+  // }
+
+  renderMyRecipes = (routerProps) => {
+    const {searchTerm, logged_in, user_name, user_id} = this.state
+    return  <RecipeContainer 
+    recipes={this.filteredRecipesArray()}  
+    deleteRecipeFromArray={this.deleteRecipeFromArray}
+    logged_in={logged_in}
+    user_id={user_id}
+    />
   }
+
 
   updateRecipeArray = () => {
     fetch("http://localhost:3000/recipes")
@@ -113,16 +148,24 @@ state = {
   }
 
   renderHome = (routerProps) => {
-    const {searchTerm} = this.state
-    return <SearchBar 
-    searchTerm={searchTerm}
-    changeSearchTerm={this.changeSearchTerm}
-    />
+    const {searchTerm, logged_in, user_name, user_id} = this.state
+    return <div>
+      <SearchBar 
+        searchTerm={searchTerm}
+        changeSearchTerm={this.changeSearchTerm}
+      />
+      <RecipeContainer 
+        recipes={this.filteredRecipesArray()}  
+        deleteRecipeFromArray={this.deleteRecipeFromArray}
+        logged_in={logged_in}
+        user_id={user_id}
+      />
+    </div>
   }
 
   render () {
     const {searchTerm, logged_in, user_name, user_id} = this.state
-    // console.log(this.state, "APP STATE")
+    console.log(this.state, "APP STATE")
 
     return (
       <div className="App">
@@ -142,27 +185,18 @@ state = {
         }
         <Switch>
           <Route path='/newrecipe' render={this.renderNewRecipeForm} />
+          <Route path='/myrecipes' render={this.renderMyRecipes} />
           <Route path='/login' render={this.renderLogIn} />
           <Route path='/home' render={this.renderHome} />
         </Switch>
 
-        <p></p>
-        {/* <RecipeHeader 
-          searchTerm={searchTerm}
-          changeSearchTerm={this.changeSearchTerm}
-        />
-        <p></p> */}
-        {/* <SearchBar 
-          searchTerm={searchTerm}
-          changeSearchTerm={this.changeSearchTerm}
-        /> */}
-        <p></p>
+        {/* <p></p>
         <RecipeContainer 
           recipes={this.filteredRecipesArray()}  
           deleteRecipeFromArray={this.deleteRecipeFromArray}
           logged_in={logged_in}
           user_id={user_id}
-        />
+        /> */}
       </div>
     );
   } 
