@@ -102,12 +102,12 @@ class NewIngredientForm extends Component {
           id="f_ingredient_measurement_type"
           autoComplete="off"
           value={this.state.measurement_type}
-          placeholder="What is the measurement type of the quantity? (ex. cups, ounces)"
+          placeholder="What is the measurement type? (ex. cups, ounces)"
           size="50"
           onChange={this.handleInput}
         />
         <p></p>
-        <input type="submit" value="Add A New Ingredient" />
+        <input className="form-button" type="submit" value="Add A New Ingredient" />
       </form>
       </div>
     );

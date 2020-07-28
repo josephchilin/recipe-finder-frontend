@@ -84,7 +84,7 @@ class LogIn extends Component {
             onChange={this.handleInput}
         />
         <p></p>
-        <input type="submit" value="Log In / Sign Up" />
+        <input className="form-button" type="submit" value="Log In / Sign Up" />
       </form>
     );
   }

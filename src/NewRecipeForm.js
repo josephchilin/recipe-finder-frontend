@@ -149,11 +149,11 @@ class NewRecipeForm extends Component {
           onChange={this.handleInput}
         />
         <p></p>
-        <input type="submit" value="Create A New Recipe" />
+        <input className="form-button" type="submit" value="Create A New Recipe" />
       </form>
         <p></p>
         <div className="ingredient-form-container">
-            <button onClick={this.handleClick}>New Ingredient</button>
+            <button className="form-button" onClick={this.handleClick}>New Ingredient</button>
               <ul>
                 {this.state.ingredient_counter.map(item => {
                   return <NewIngredientForm 
