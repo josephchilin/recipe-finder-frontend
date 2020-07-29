@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './SearchBar'
 import RecipeContainer from './RecipeContainer'
 import NewRecipeForm from './NewRecipeForm'
+import EditRecipeForm from './EditRecipeForm'
 import LogIn from './LogIn'
 import NavBar from './NavBar'
 import MyRecipes from './MyRecipes'
@@ -98,6 +99,16 @@ class App extends React.Component {
     user_id={user_id}
     />
   }
+
+  renderEditRecipeForm = (routerProps) => {
+    const {user_id} = this.state
+    return <EditRecipeForm 
+    addNewRecipeToArray={this.addNewRecipeToArray}
+    updateRecipeArray={this.updateRecipeArray}
+    user_id={user_id}
+    />
+  }
+
   renderMyRecipes = (routerProps) => {
     const {logged_in, user_name, user_id, recipeList} = this.state
     
@@ -162,6 +173,7 @@ class App extends React.Component {
         <Switch>
           <Route path='/newrecipe' render={this.renderNewRecipeForm} />
           <Route path='/myrecipes' render={this.renderMyRecipes} />
+          <Route path='/editrecipe' render={this.renderEditRecipeForm} />
           <Route path='/login' render={this.renderLogIn} />
           <Route path='/home' render={this.renderHome} />
         </Switch>

@@ -1,5 +1,6 @@
 import React from 'react'
 import IngredientItem from './IngredientItem'
+import {NavLink, Redirect} from 'react-router-dom'
 // import IngredientContainer from './IngredientContainer'
 
 class RecipeItem extends React.Component {
@@ -27,6 +28,10 @@ class RecipeItem extends React.Component {
         .then((deletedRecipe) => {
             this.props.deleteRecipeFromArray(this.props.recipe.id)
         })
+    }
+
+    handleEdit = (evt) => {
+        console.log("EDIT BUTTON CLICK")
     }
     
     render(){
@@ -77,16 +82,33 @@ class RecipeItem extends React.Component {
                         <div className="recipe-instructions">
                             <p><b>Instructions:</b> {instruction}</p>
                         </div>
-                    {
-                    // this.props.logged_in
-                    user.id === user_id
-                        ?
-                        <button className="form-button" onClick={this.handleDelete}>
-                            Delete this Recipe
-                        </button>
-                        :
-                        null
-                    }
+                        <div className = "recipe-buttons">
+                            <div>
+                                {
+                                // this.props.logged_in
+                                user.id === user_id
+                                    ?
+                                    <button className="form-button" onClick={this.handleEdit}>
+                                        Edit this Recipe
+                                    </button>
+                                    :
+                                    null
+                                }
+                            </div>
+
+                            <div>
+                                {
+                                // this.props.logged_in
+                                user.id === user_id
+                                    ?
+                                    <button className="form-button" onClick={this.handleDelete}>
+                                        Delete this Recipe
+                                    </button>
+                                    :
+                                    null
+                                }
+                            </div>
+                        </div>
                 </div>
             </li>
         )
