@@ -17,19 +17,20 @@ class EditRecipeForm extends Component {
     ingredient_counter: []
   }
 
-//   componentDidMount(){
-//     fetch("http://localhost:3000/cuisines")
-//     .then(resp => resp.json())
-//     // .then(console.log)
-//     .then(arrayOfCuisines => {
-//       this.setState({
-//         cuisineList: arrayOfCuisines
-//       })
-//     })
-//     this.setState({
-//       user_id: this.props.user_id
-//     })
-//   }
+  componentDidMount(){
+      console.log(this.props, "EDIT RECIPE FORM PROPS")
+    // fetch("http://localhost:3000/cuisines")
+    // .then(resp => resp.json())
+    // // .then(console.log)
+    // .then(arrayOfCuisines => {
+    //   this.setState({
+    //     cuisineList: arrayOfCuisines
+    //   })
+    // })
+    // this.setState({
+    //   user_id: this.props.user_id
+    // })
+  }
 
 //   handleInput = (evt) => {
 

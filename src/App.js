@@ -8,7 +8,7 @@ import EditRecipeForm from './EditRecipeForm'
 import LogIn from './LogIn'
 import NavBar from './NavBar'
 import MyRecipes from './MyRecipes'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 
 

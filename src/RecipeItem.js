@@ -1,6 +1,6 @@
 import React from 'react'
 import IngredientItem from './IngredientItem'
-import {NavLink, Redirect} from 'react-router-dom'
+import {NavLink, Redirect, Link} from 'react-router-dom'
 // import IngredientContainer from './IngredientContainer'
 
 class RecipeItem extends React.Component {
@@ -32,6 +32,8 @@ class RecipeItem extends React.Component {
 
     handleEdit = (evt) => {
         console.log("EDIT BUTTON CLICK")
+        console.log(this.props)
+        return <Redirect to="/editrecipe" />
     }
     
     render(){
@@ -88,9 +90,10 @@ class RecipeItem extends React.Component {
                                 // this.props.logged_in
                                 user.id === user_id
                                     ?
-                                    <button className="form-button" onClick={this.handleEdit}>
-                                        Edit this Recipe
-                                    </button>
+                                    <Link to="/editrecipe">
+                                            Edit this Recipe
+                                    </Link>
+
                                     :
                                     null
                                 }
