@@ -1,6 +1,6 @@
 import React from 'react'
 import IngredientItem from './IngredientItem'
-import {NavLink, Redirect, Link} from 'react-router-dom'
+// import {NavLink, Redirect, Link} from 'react-router-dom'
 // import IngredientContainer from './IngredientContainer'
 
 class RecipeItem extends React.Component {
@@ -18,8 +18,6 @@ class RecipeItem extends React.Component {
         })
     }
 
-
-    
     handleDelete = (evt) => {
         fetch(`http://localhost:3000/recipes/${this.props.recipe.id}`, {
             method: "DELETE"
@@ -31,15 +29,16 @@ class RecipeItem extends React.Component {
     }
 
     handleEdit = (evt) => {
-        console.log("EDIT BUTTON CLICK")
-        console.log(this.props)
-        return <Redirect to="/editrecipe" />
+        let recipe_object = this.props.recipe
+        // console.log(recipe_object)
+        this.props.editRecipeFunction(recipe_object)
+        // console.log("EDIT BUTTON CLICK")
+        // console.log(this.props, "EDIT RECIPE PROPS")
     }
     
     render(){
-        // console.log(this.props, "inside recipe item")
-        
-        // debugger
+        // console.log(this.props, "INSIDE RECIPE ITEM")
+
         let {name, instruction, serving_size, time, image_url, user} = this.props.recipe
 
         let {user_id} = this.props
@@ -85,15 +84,33 @@ class RecipeItem extends React.Component {
                             <p><b>Instructions:</b> {instruction}</p>
                         </div>
                         <div className = "recipe-buttons">
+                            {/* <div>
+                                {
+                                // this.props.logged_in
+                                user.id === user_id
+                                    ?
+                                    <Link to={{
+                                        pathname: '/editrecipe',
+                                        state: {
+                                            name: "LUFFY"
+                                        }
+                                    }}>
+                                            Edit this Recipe
+                                    </Link>
+
+                                    :
+                                    null
+                                }
+                            </div> */}
+
                             <div>
                                 {
                                 // this.props.logged_in
                                 user.id === user_id
                                     ?
-                                    <Link to="/editrecipe">
-                                            Edit this Recipe
-                                    </Link>
-
+                                    <button className="form-button" onClick={this.handleEdit}>
+                                        Edit this Recipe
+                                    </button>
                                     :
                                     null
                                 }

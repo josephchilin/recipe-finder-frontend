@@ -8,7 +8,7 @@ import EditRecipeForm from './EditRecipeForm'
 import LogIn from './LogIn'
 import NavBar from './NavBar'
 import MyRecipes from './MyRecipes'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 
 
@@ -19,7 +19,8 @@ class App extends React.Component {
     searchTerm: "",
     logged_in: false,
     user_id: "",
-    user_name: ""
+    user_name: "",
+    currentRecipe: ""
   }
 
   componentDidMount() {
@@ -78,6 +79,13 @@ class App extends React.Component {
     })
   }
 
+  editRecipeFunction = (recipe) => {
+    console.log(recipe)
+    this.setState({
+      currentRecipe: recipe
+    })
+  }
+
   changeSearchTerm = (termFromSearch) => {
     this.setState({
       searchTerm: termFromSearch
@@ -101,10 +109,11 @@ class App extends React.Component {
   }
 
   renderEditRecipeForm = (routerProps) => {
-    const {user_id} = this.state
+    const {user_id, currentRecipe} = this.state
     return <EditRecipeForm 
     addNewRecipeToArray={this.addNewRecipeToArray}
     updateRecipeArray={this.updateRecipeArray}
+    currentRecipe={currentRecipe}
     user_id={user_id}
     />
   }
@@ -114,13 +123,31 @@ class App extends React.Component {
     
     return <MyRecipes 
     deleteRecipeFromArray={this.deleteRecipeFromArray}
+    editRecipeFunction={this.editRecipeFunction}
     recipeList={recipeList}
     logged_in={logged_in}
     user_id={user_id}
     user_name={user_name}
     />
   }
-  
+
+  renderHome = (routerProps) => {
+    const {searchTerm, logged_in, user_id} = this.state
+    return <div>
+      <SearchBar 
+        searchTerm={searchTerm}
+        changeSearchTerm={this.changeSearchTerm}
+      />
+      <RecipeContainer 
+        recipes={this.filteredRecipesArray()}  
+        deleteRecipeFromArray={this.deleteRecipeFromArray}
+        editRecipeFunction={this.editRecipeFunction}
+        logged_in={logged_in}
+        user_id={user_id}
+      />
+    </div>
+  }
+
   renderLogIn = (routerProps) => {
 
     return <LogIn
@@ -134,25 +161,11 @@ class App extends React.Component {
     })
   }
 
-  renderHome = (routerProps) => {
-    const {searchTerm, logged_in, user_id} = this.state
-    return <div>
-      <SearchBar 
-        searchTerm={searchTerm}
-        changeSearchTerm={this.changeSearchTerm}
-      />
-      <RecipeContainer 
-        recipes={this.filteredRecipesArray()}  
-        deleteRecipeFromArray={this.deleteRecipeFromArray}
-        logged_in={logged_in}
-        user_id={user_id}
-      />
-    </div>
-  }
+
 
   render () {
-    const {searchTerm, logged_in, user_name, user_id} = this.state
-    // console.log(this.state, "APP STATE")
+    const {logged_in, user_name} = this.state
+    console.log(this.state, "APP STATE")
 
     return (
       <div className="App">

@@ -3,10 +3,12 @@ import RecipeItem from './RecipeItem'
 
 let RecipeContainer = (props) => {
     
+  // console.log(props, "RECIPE CONTAINER PROPS")
   let arrayOfComponents = props.recipes.map((recipePOJO) => {
     return <RecipeItem
       deleteRecipeFromArray={props.deleteRecipeFromArray}
     //   updateRecipeFromArray={props.updateRecipeFromArray}
+      editRecipeFunction={props.editRecipeFunction}
       recipe={recipePOJO}
       key={recipePOJO.id}
       logged_in={props.logged_in}

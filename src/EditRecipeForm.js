@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import NewIngredientForm from './NewIngredientForm'
-import {NavLink, Redirect} from 'react-router-dom'
+// import {NavLink, Redirect} from 'react-router-dom'
 
 class EditRecipeForm extends Component {
 
@@ -19,6 +19,7 @@ class EditRecipeForm extends Component {
 
   componentDidMount(){
       console.log(this.props, "EDIT RECIPE FORM PROPS")
+      console.log(this.props.location, "EDIT RECIPE FORM LOCATION PROPS")
     // fetch("http://localhost:3000/cuisines")
     // .then(resp => resp.json())
     // // .then(console.log)

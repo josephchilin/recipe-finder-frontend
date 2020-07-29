@@ -19,16 +19,23 @@ class MyRecipes extends React.Component {
     return theArraytoReturn
   }
 
-  deleteRecipeFromArray = (id) => {
-    console.log(id, "DELETED ID")
-    let copyOfList = this.state.recipeList.filter((recipe) => {
-      return recipe.id !== id 
-    })
+  // deleteRecipeFromArray = (id) => {
+  //   console.log(id, "DELETED ID")
+  //   let copyOfList = this.state.recipeList.filter((recipe) => {
+  //     return recipe.id !== id 
+  //   })
 
-    this.setState({
-      recipeList: copyOfList
-    })
-  }
+  //   this.setState({
+  //     recipeList: copyOfList
+  //   })
+  // }
+
+  // editRecipeFunction = (recipe) => {
+  //   console.log(recipe)
+  //   this.setState({
+  //     currentRecipe: recipe
+  //   })
+  // }
 
   render(){
     // console.log(this.props, "MY RECIPE PROPS")
@@ -39,6 +46,7 @@ class MyRecipes extends React.Component {
           <RecipeContainer 
             recipes={this.filteredRecipesArray()}  
             deleteRecipeFromArray={this.props.deleteRecipeFromArray}
+            editRecipeFunction={this.props.editRecipeFunction}
             logged_in={this.props.logged_in}
             user_id={this.props.user_id}
           />
