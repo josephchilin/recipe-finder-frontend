@@ -38,40 +38,41 @@ class EditRecipeForm extends Component {
     })
   }
 
-//   handleSubmit = (evt) => {
-//     // console.log(this.state, "STATE BEFORE FETCH")
-//     evt.preventDefault()
+  handleSubmit = (evt) => {
+    // console.log(this.state, "STATE BEFORE FETCH")
+    evt.preventDefault()
 
-//     let {name, image_url, serving_size, time, instruction, cuisine_id, user_id} = this.state
+    let {name, image_url, serving_size, time, instruction, cuisine_id, user_id} = this.state
 
-//     fetch("http://localhost:3000/recipes", {
-//       method: "POST",
-//       headers: {
-//         "content-type": "application/json",
-//         "accept": "application/json"
-//       },
-//       body: JSON.stringify({
-//         name: name,
-//         image_url: image_url,
-//         serving_size: serving_size,
-//         time: time,
-//         instruction: instruction,
-//         cuisine_id: cuisine_id,
-//         rating: null,
-//         user_id: user_id
-//       })
-//     })
-//     .then(r => r.json())
-//     .then((newRecipe) => {
-//       // console.log(newRecipe, "AFTER FETCH NEW RECIPE PROMISE")
-//       this.props.addNewRecipeToArray(newRecipe);
+    fetch(`http://localhost:3000/recipes/${this.props.currentRecipe.id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        image_url: image_url,
+        serving_size: serving_size,
+        time: time,
+        instruction: instruction,
+        cuisine_id: cuisine_id,
+        rating: null,
+        user_id: user_id
+      })
+    })
+    .then(r => r.json())
+    .then((newRecipe) => {
+      console.log(newRecipe, "AFTER EDIT RECIPE PATCH FETCH")
+      this.props.updateRecipeArray();
+    //   this.props.addNewRecipeToArray(newRecipe);
 
-//       this.setState({
-//         new_recipe_object: newRecipe
-//       })
-//     })
+    //   this.setState({
+    //     new_recipe_object: newRecipe
+    //   })
+    })
 
-//   }
+  }
 
 //   handleClick = (evt) => {
 //     this.setState({
@@ -81,12 +82,11 @@ class EditRecipeForm extends Component {
 //   }
 
   render() {
-      console.log(this.state, "STATE INSIDE RECIPE EDIT RENDER")
+    //   console.log(this.state, "STATE INSIDE RECIPE EDIT RENDER")
 
     return (
       <div className="recipe-form-container">
-        EDIT RECIPE FORM TEST {this.state.name}
-        {/* <div className="recipe-form">
+        <div className="recipe-form">
 
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="f_name">Name: </label>
@@ -150,10 +150,10 @@ class EditRecipeForm extends Component {
             onChange={this.handleInput}
           />
           <p></p>
-          <input className="form-button" type="submit" value="Create New Recipe" />
+          <input className="form-button" type="submit" value="Edit Your Recipe" />
         </form>
           <p></p>
-          <div className="ingredient-form-container">
+          {/* <div className="ingredient-form-container">
               <button className="form-button" onClick={this.handleClick}>New Ingredient</button>
                 <ul>
                   {this.state.ingredient_counter.map(item => {
@@ -163,9 +163,9 @@ class EditRecipeForm extends Component {
                       />
                   })}
                 </ul>
-          </div>
+          </div> */}
 
-        </div> */}
+        </div>
       </div>
     );
   }
@@ -173,16 +173,4 @@ class EditRecipeForm extends Component {
 }
 
 export default EditRecipeForm;
-
-// t.integer "cuisine_id"
-// t.string "name"
-// t.string "image_url"
-// t.string "instruction"
-// t.integer "serving_size"
-// t.integer "rating"
-// t.integer "user_id"
-// t.integer "time"
-
-//component did mount grab all cuisine names
-//make cuisine name drop down
 
