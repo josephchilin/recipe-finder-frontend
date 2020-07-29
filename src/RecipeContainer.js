@@ -18,7 +18,6 @@ let RecipeContainer = (props) => {
     <main>
       { 
         <ul className="ul-recipe">
-          "RECIPE CONTAINER"
           {arrayOfComponents}
         </ul>
       }

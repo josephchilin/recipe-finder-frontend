@@ -32,13 +32,21 @@ componentDidMount() {
   })
 }
 
-  filteredRecipesArray = () => {
+  filteredRecipesArray = (routerProps) => {
     let theArraytoReturn = this.state.recipeList
 
+      // this.state.logged_in
+      // ?
+      // console.log("RECIPE FILTER LOGGED IN")
+      // :
+      // null
+
     // if(routerProps.location.pathname==="/myrecipes"){
+    //   console.log("MY RECIPESROUTER PROPS")
+    // } else 
 
-    // }
-
+    // console.log(routerProps, "FILTERED ARRAY ROUTER PROPS")
+    
     if (this.state.searchTerm !== ""){
       theArraytoReturn = this.state.recipeList.filter((recipePOJO)=>{
         return (
@@ -52,32 +60,21 @@ componentDidMount() {
     return theArraytoReturn
   }
 
-
-  // myRecipesArray = () => {
-  //   let theArraytoReturn = this.state.recipeList
-  //   let loggedInUserID = this.state.user_id
-
-  //   console.log(loggedInUserID, "MY RECIPES ID")
-  //   // if (this.state.searchTerm !== ""){
-  //   //   theArraytoReturn = this.state.recipeList.filter((recipePOJO)=>{
-  //   //     return (
-  //   //       recipePOJO.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-  //   //     )
-  //   //   })
-  //   // } else if (this.state.searchTerm === ""){
-  //   //   theArraytoReturn = []
-  //   // }
-    
-  //   // return theArraytoReturn
-  // }
-
   renderMyRecipes = (routerProps) => {
     const {searchTerm, logged_in, user_name, user_id} = this.state
-    return  <RecipeContainer 
-    recipes={this.filteredRecipesArray()}  
+    // console.log(this.props, "MY RECIPES PROPS")
+    // return  <RecipeContainer 
+    // recipes={this.filteredRecipesArray(routerProps)}  
+    // deleteRecipeFromArray={this.deleteRecipeFromArray}
+    // logged_in={logged_in}
+    // user_id={user_id}
+    // />
+    
+    return <MyRecipes 
     deleteRecipeFromArray={this.deleteRecipeFromArray}
     logged_in={logged_in}
     user_id={user_id}
+    user_name={user_name}
     />
   }
 
