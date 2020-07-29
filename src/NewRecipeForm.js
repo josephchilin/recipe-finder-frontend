@@ -10,7 +10,7 @@ class NewRecipeForm extends Component {
     time: "",
     user_id: "",
     instruction: "",
-    cuisine_id: 9,
+    cuisine_id: 13,
     cuisineList: [],
     new_recipe_object: "",
     ingredient_counter: []
@@ -81,7 +81,7 @@ class NewRecipeForm extends Component {
   }
 
   render() {
-      console.log(this.state.new_recipe_object, "RECIPE OBJECT INSIDE RECIPE FORM RENDER")
+      // console.log(this.state.new_recipe_object, "RECIPE OBJECT INSIDE RECIPE FORM RENDER")
 
     return (
       <div className="recipe-form-container">

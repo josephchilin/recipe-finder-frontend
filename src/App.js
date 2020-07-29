@@ -13,39 +13,27 @@ import {withRouter} from 'react-router-dom'
 
 class App extends React.Component {
  
-state = {
-  recipeList: [],
-  searchTerm: "",
-  logged_in: false,
-  user_id: "",
-  user_name: ""
-}
+  state = {
+    recipeList: [],
+    searchTerm: "",
+    logged_in: false,
+    user_id: "",
+    user_name: ""
+  }
 
-componentDidMount() {
-  fetch("http://localhost:3000/recipes")
-  .then(resp => resp.json())
-  // .then(console.log)
-  .then(arrayOfRecipes => {
-    this.setState({
-      recipeList: arrayOfRecipes
+  componentDidMount() {
+    fetch("http://localhost:3000/recipes")
+    .then(resp => resp.json())
+    // .then(console.log)
+    .then(arrayOfRecipes => {
+      this.setState({
+        recipeList: arrayOfRecipes
+      })
     })
-  })
-}
+  }
 
   filteredRecipesArray = (routerProps) => {
     let theArraytoReturn = this.state.recipeList
-
-      // this.state.logged_in
-      // ?
-      // console.log("RECIPE FILTER LOGGED IN")
-      // :
-      // null
-
-    // if(routerProps.location.pathname==="/myrecipes"){
-    //   console.log("MY RECIPESROUTER PROPS")
-    // } else 
-
-    // console.log(routerProps, "FILTERED ARRAY ROUTER PROPS")
     
     if (this.state.searchTerm !== ""){
       theArraytoReturn = this.state.recipeList.filter((recipePOJO)=>{
@@ -59,26 +47,6 @@ componentDidMount() {
     
     return theArraytoReturn
   }
-
-  renderMyRecipes = (routerProps) => {
-    const {searchTerm, logged_in, user_name, user_id, recipeList} = this.state
-    // console.log(this.props, "MY RECIPES PROPS")
-    // return  <RecipeContainer 
-    // recipes={this.filteredRecipesArray(routerProps)}  
-    // deleteRecipeFromArray={this.deleteRecipeFromArray}
-    // logged_in={logged_in}
-    // user_id={user_id}
-    // />
-    
-    return <MyRecipes 
-    deleteRecipeFromArray={this.deleteRecipeFromArray}
-    recipeList={recipeList}
-    logged_in={logged_in}
-    user_id={user_id}
-    user_name={user_name}
-    />
-  }
-
 
   updateRecipeArray = () => {
     fetch("http://localhost:3000/recipes")
@@ -130,13 +98,23 @@ componentDidMount() {
     user_id={user_id}
     />
   }
-
+  renderMyRecipes = (routerProps) => {
+    const {logged_in, user_name, user_id, recipeList} = this.state
+    
+    return <MyRecipes 
+    deleteRecipeFromArray={this.deleteRecipeFromArray}
+    recipeList={recipeList}
+    logged_in={logged_in}
+    user_id={user_id}
+    user_name={user_name}
+    />
+  }
+  
   renderLogIn = (routerProps) => {
 
     return <LogIn
     updateUser={this.updateUser}
     />
-
   }
 
   logOut = () => {
@@ -146,7 +124,7 @@ componentDidMount() {
   }
 
   renderHome = (routerProps) => {
-    const {searchTerm, logged_in, user_name, user_id} = this.state
+    const {searchTerm, logged_in, user_id} = this.state
     return <div>
       <SearchBar 
         searchTerm={searchTerm}
