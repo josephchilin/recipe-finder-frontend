@@ -3,43 +3,12 @@ import RecipeContainer from './RecipeContainer'
 
 class MyRecipes extends React.Component {
 
-  state = {
-    recipeList: []
-  }
-    // componentDidMount(){
-
-    // }
-
-  // let arrayOfComponents = props.recipes.map((recipePOJO) => {
-  //   return <RecipeItem
-  //     deleteRecipeFromArray={props.deleteRecipeFromArray}
-  //   //   updateRecipeFromArray={props.updateRecipeFromArray}
-  //     recipe={recipePOJO}
-  //     key={recipePOJO.id}
-  //     logged_in={props.logged_in}
-  //     user_id={props.user_id}
-  //   />
-  // })
-
-  componentDidMount() {
-    fetch("http://localhost:3000/recipes")
-    .then(resp => resp.json())
-    // .then(console.log)
-    .then(arrayOfRecipes => {
-      this.setState({
-        recipeList: arrayOfRecipes
-      })
-    })
-  }
-
   filteredRecipesArray = () => {
-    // debugger
-    let theArraytoReturn = this.state.recipeList
-    
+    let theArraytoReturn = this.props.recipeList
     // console.log(theArraytoReturn, "MY RECIPE THE ARRAY TO RETURN")
     // console.log(this.props.user_id, "MY RECIPES ARRAY USER ID")
     if (this.props.logged_in){
-      theArraytoReturn = this.state.recipeList.filter((recipePOJO)=>{
+      theArraytoReturn = this.props.recipeList.filter((recipePOJO)=>{
         return (
           // console.log(recipePOJO.user.name, "RECIPE POJO LOGGED IN")
           recipePOJO.user.name.includes(this.props.user_name)
@@ -50,7 +19,8 @@ class MyRecipes extends React.Component {
     return theArraytoReturn
   }
 
-  deleteRecipeFromMyRecipes = (id) => {
+  deleteRecipeFromArray = (id) => {
+    console.log(id, "DELETED ID")
     let copyOfList = this.state.recipeList.filter((recipe) => {
       return recipe.id !== id 
     })
@@ -78,14 +48,3 @@ class MyRecipes extends React.Component {
 }
 
 export default MyRecipes
-
-//component did mount fetch user
-
-
-// let renderIngredientArray = this.props.recipe.recipe_ingredients.map((recipeIngredientPOJO) => {  
-//   return  <IngredientItem
-//     recipe_ingredient={recipeIngredientPOJO}
-//     ingredientList={this.state.ingredientList}
-//     key={recipeIngredientPOJO.id}
-//   />
-// })

@@ -61,7 +61,7 @@ componentDidMount() {
   }
 
   renderMyRecipes = (routerProps) => {
-    const {searchTerm, logged_in, user_name, user_id} = this.state
+    const {searchTerm, logged_in, user_name, user_id, recipeList} = this.state
     // console.log(this.props, "MY RECIPES PROPS")
     // return  <RecipeContainer 
     // recipes={this.filteredRecipesArray(routerProps)}  
@@ -72,6 +72,7 @@ componentDidMount() {
     
     return <MyRecipes 
     deleteRecipeFromArray={this.deleteRecipeFromArray}
+    recipeList={recipeList}
     logged_in={logged_in}
     user_id={user_id}
     user_name={user_name}
@@ -162,7 +163,7 @@ componentDidMount() {
 
   render () {
     const {searchTerm, logged_in, user_name, user_id} = this.state
-    console.log(this.state, "APP STATE")
+    // console.log(this.state, "APP STATE")
 
     return (
       <div className="App">
