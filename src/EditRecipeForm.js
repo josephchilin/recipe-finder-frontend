@@ -18,27 +18,25 @@ class EditRecipeForm extends Component {
   }
 
   componentDidMount(){
-      console.log(this.props, "EDIT RECIPE FORM PROPS")
-    // fetch("http://localhost:3000/cuisines")
-    // .then(resp => resp.json())
-    // // .then(console.log)
-    // .then(arrayOfCuisines => {
-    //   this.setState({
-    //     cuisineList: arrayOfCuisines
-    //   })
-    // })
-    // this.setState({
-    //   user_id: this.props.user_id
-    // })
+    console.log(this.props, "EDIT RECIPE FORM PROPS")
+    let {name, image_url, serving_size, time, user, instruction, cuisine} = this.props.currentRecipe
+    this.setState({
+        name: name,
+        image_url: image_url,
+        serving_size: serving_size,
+        time: time,
+        user_id: user.id,
+        instruction: instruction,
+        cuisine: cuisine.id, 
+        new_recipe_object: this.props.currentRecipe
+    })
   }
 
-//   handleInput = (evt) => {
-
-//     this.setState({
-//       [evt.target.name]: evt.target.value
-//     })
-
-//   }
+  handleInput = (evt) => {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
 
 //   handleSubmit = (evt) => {
 //     // console.log(this.state, "STATE BEFORE FETCH")
@@ -83,11 +81,11 @@ class EditRecipeForm extends Component {
 //   }
 
   render() {
-      // console.log(this.state.new_recipe_object, "RECIPE OBJECT INSIDE RECIPE FORM RENDER")
+      console.log(this.state, "STATE INSIDE RECIPE EDIT RENDER")
 
     return (
       <div className="recipe-form-container">
-        EDIT RECIPE FORM TEST
+        EDIT RECIPE FORM TEST {this.state.name}
         {/* <div className="recipe-form">
 
         <form onSubmit={this.handleSubmit}>
