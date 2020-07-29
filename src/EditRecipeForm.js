@@ -19,7 +19,6 @@ class EditRecipeForm extends Component {
 
   componentDidMount(){
       console.log(this.props, "EDIT RECIPE FORM PROPS")
-      console.log(this.props.location, "EDIT RECIPE FORM LOCATION PROPS")
     // fetch("http://localhost:3000/cuisines")
     // .then(resp => resp.json())
     // // .then(console.log)

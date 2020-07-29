@@ -80,13 +80,13 @@ class App extends React.Component {
   }
 
   editRecipeFunction = (recipe) => {
-    console.log(recipe, "APP EDIT RECIPE FUNCTION RECIPE")
-    console.log(this.props, "EDIT RECIPE FUNCTION PROPS")
+    // console.log(recipe, "APP EDIT RECIPE FUNCTION RECIPE")
+    // console.log(this.props, "EDIT RECIPE FUNCTION PROPS")
     this.setState({
       currentRecipe: recipe
     })
+      this.props.history.push('/editrecipe')
 
-    // return <Redirect to='/editrecipe'/>
   }
 
   changeSearchTerm = (termFromSearch) => {
