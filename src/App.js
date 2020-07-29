@@ -8,7 +8,7 @@ import EditRecipeForm from './EditRecipeForm'
 import LogIn from './LogIn'
 import NavBar from './NavBar'
 import MyRecipes from './MyRecipes'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 
 
@@ -80,10 +80,13 @@ class App extends React.Component {
   }
 
   editRecipeFunction = (recipe) => {
-    console.log(recipe)
+    console.log(recipe, "APP EDIT RECIPE FUNCTION RECIPE")
+    console.log(this.props, "EDIT RECIPE FUNCTION PROPS")
     this.setState({
       currentRecipe: recipe
     })
+
+    // return <Redirect to='/editrecipe'/>
   }
 
   changeSearchTerm = (termFromSearch) => {
@@ -165,7 +168,7 @@ class App extends React.Component {
 
   render () {
     const {logged_in, user_name} = this.state
-    console.log(this.state, "APP STATE")
+    // console.log(this.state, "APP STATE")
 
     return (
       <div className="App">
