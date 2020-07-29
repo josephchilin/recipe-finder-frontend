@@ -67,6 +67,7 @@ class NewIngredientForm extends Component {
   render() {
       // console.log(this.props, "INGREDIENT FORM PROPS")
     return (
+<div className="recipe-form-container">
 
       <div className="ingredient-form">
         <p></p>
@@ -79,7 +80,7 @@ class NewIngredientForm extends Component {
           autoComplete="off"
           value={this.state.name}
           placeholder="What is your ingredient called?"
-          size="59"
+          size="60"
           onChange={this.handleInput}
         />
         <p></p>
@@ -111,6 +112,8 @@ class NewIngredientForm extends Component {
         <p></p>
       </form>
       </div>
+      </div>
+
     );
   }
 

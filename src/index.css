@@ -94,8 +94,20 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  /* word-spacing: 30px; */
+}
+
+.recipe-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* justify-content: space-evenly; */
-  /* padding: 50px; */
+  padding-top: 10px;
+
   text-align: center;
 }
 
@@ -142,6 +154,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-right: 8px;
 }
 
 .ingredient-form {
