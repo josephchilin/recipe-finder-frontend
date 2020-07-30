@@ -170,3 +170,7 @@ h3 {
   justify-content: center;
   justify-content: space-evenly;
 }
+
+.li-ingredient {
+  padding-bottom: 5px;
+}
