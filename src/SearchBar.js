@@ -12,7 +12,7 @@ function SearchBar(props){
        {
           props.logged_in
           ?
-          <p><b>Welcome {props.user_name}!</b></p> //ADD LOGOUT BUTTON AND FUNCTION TO SET STATE TO LOGGED OUT
+          <p><b>Welcome {props.user_name}!</b></p>
           :
           null
         }

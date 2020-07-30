@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import NewIngredientForm from './NewIngredientForm'
-// import {NavLink, Redirect} from 'react-router-dom'
 
 class EditRecipeForm extends Component {
 
@@ -19,7 +17,7 @@ class EditRecipeForm extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props, "EDIT RECIPE FORM PROPS")
+    // console.log(this.props, "EDIT RECIPE FORM PROPS")
     let {name, image_url, serving_size, time, user, instruction, cuisine} = this.props.currentRecipe
     this.setState({
         name: name,
@@ -64,7 +62,7 @@ class EditRecipeForm extends Component {
     })
     .then(r => r.json())
     .then((newRecipe) => {
-      console.log(newRecipe, "AFTER EDIT RECIPE PATCH FETCH")
+      // console.log(newRecipe, "AFTER EDIT RECIPE PATCH FETCH")
       this.props.updateRecipeArray();
       this.setState({
         submitted: true

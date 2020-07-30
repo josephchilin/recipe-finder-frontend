@@ -19,30 +19,13 @@ class MyRecipes extends React.Component {
     return theArraytoReturn
   }
 
-  // deleteRecipeFromArray = (id) => {
-  //   console.log(id, "DELETED ID")
-  //   let copyOfList = this.state.recipeList.filter((recipe) => {
-  //     return recipe.id !== id 
-  //   })
-
-  //   this.setState({
-  //     recipeList: copyOfList
-  //   })
-  // }
-
-  // editRecipeFunction = (recipe) => {
-  //   console.log(recipe)
-  //   this.setState({
-  //     currentRecipe: recipe
-  //   })
-  // }
-
   render(){
     // console.log(this.props, "MY RECIPE PROPS")
     // console.log(this.props.user_id, "MY RECIPE USER ID")
 
     return (
       <div>
+        <h2>{this.props.user_name}'s Recipes</h2>
           <RecipeContainer 
             recipes={this.filteredRecipesArray()}  
             deleteRecipeFromArray={this.props.deleteRecipeFromArray}

@@ -1,7 +1,5 @@
 import React from 'react'
 import IngredientItem from './IngredientItem'
-// import {NavLink, Redirect, Link} from 'react-router-dom'
-// import IngredientContainer from './IngredientContainer'
 
 class RecipeItem extends React.Component {
     state = {
@@ -60,9 +58,7 @@ class RecipeItem extends React.Component {
                     <div className="recipe-name">
                         <h2>{name}</h2>
                     </div>
-                            {/* <div className="recipe-user">
-                            <span><b>By:</b> {user.name}</span> 
-                            </div> */}
+        
                         <div className="recipe-header">
 
                         <span><b>By:</b> {user.name}</span> <span><b>Yield:</b> {serving_size}</span> <span><b>Cooking Time:</b> {time} minutes</span>
@@ -84,24 +80,6 @@ class RecipeItem extends React.Component {
                             <p><b>Instructions:</b> {instruction}</p>
                         </div>
                         <div className = "recipe-buttons">
-                            {/* <div>
-                                {
-                                // this.props.logged_in
-                                user.id === user_id
-                                    ?
-                                    <Link to={{
-                                        pathname: '/editrecipe',
-                                        state: {
-                                            name: "LUFFY"
-                                        }
-                                    }}>
-                                            Edit this Recipe
-                                    </Link>
-
-                                    :
-                                    null
-                                }
-                            </div> */}
 
                             <div>
                                 {

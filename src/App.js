@@ -11,7 +11,6 @@ import MyRecipes from './MyRecipes'
 import {Switch, Route} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 
-
 class App extends React.Component {
  
   state = {
@@ -80,8 +79,6 @@ class App extends React.Component {
   }
 
   editRecipeFunction = (recipe) => {
-    // console.log(recipe, "APP EDIT RECIPE FUNCTION RECIPE")
-    // console.log(this.props, "EDIT RECIPE FUNCTION PROPS")
     this.setState({
       currentRecipe: recipe
     })
@@ -109,21 +106,21 @@ class App extends React.Component {
   renderNewRecipeForm = (routerProps) => {
     const {user_id} = this.state
     return <NewRecipeForm 
-    addNewRecipeToArray={this.addNewRecipeToArray}
-    updateRecipeArray={this.updateRecipeArray}
-    redirectToMyRecipes={this.redirectToMyRecipes}
-    user_id={user_id}
+      addNewRecipeToArray={this.addNewRecipeToArray}
+      updateRecipeArray={this.updateRecipeArray}
+      redirectToMyRecipes={this.redirectToMyRecipes}
+      user_id={user_id}
     />
   }
 
   renderEditRecipeForm = (routerProps) => {
     const {user_id, currentRecipe} = this.state
     return <EditRecipeForm 
-    addNewRecipeToArray={this.addNewRecipeToArray}
-    updateRecipeArray={this.updateRecipeArray}
-    currentRecipe={currentRecipe}
-    user_id={user_id}
-    redirectToMyRecipes={this.redirectToMyRecipes}
+      addNewRecipeToArray={this.addNewRecipeToArray}
+      updateRecipeArray={this.updateRecipeArray}
+      currentRecipe={currentRecipe}
+      user_id={user_id}
+      redirectToMyRecipes={this.redirectToMyRecipes}
     />
   }
 
@@ -131,12 +128,12 @@ class App extends React.Component {
     const {logged_in, user_name, user_id, recipeList} = this.state
     
     return <MyRecipes 
-    deleteRecipeFromArray={this.deleteRecipeFromArray}
-    editRecipeFunction={this.editRecipeFunction}
-    recipeList={recipeList}
-    logged_in={logged_in}
-    user_id={user_id}
-    user_name={user_name}
+      deleteRecipeFromArray={this.deleteRecipeFromArray}
+      editRecipeFunction={this.editRecipeFunction}
+      recipeList={recipeList}
+      logged_in={logged_in}
+      user_id={user_id}
+      user_name={user_name}
     />
   }
 
@@ -160,9 +157,8 @@ class App extends React.Component {
   }
 
   renderLogIn = (routerProps) => {
-
     return <LogIn
-    updateUser={this.updateUser}
+      updateUser={this.updateUser}
     />
   }
 
@@ -171,8 +167,6 @@ class App extends React.Component {
       logged_in: false
     })
   }
-
-
 
   render () {
     const {logged_in} = this.state
@@ -187,13 +181,6 @@ class App extends React.Component {
         <p></p>
         <h1 className="app-title">ReciPLS</h1>
         <p></p>
-        {/* {
-          logged_in
-          ?
-          <p><b>Welcome {user_name}!</b></p> //ADD LOGOUT BUTTON AND FUNCTION TO SET STATE TO LOGGED OUT
-          :
-          null
-        } */}
         <Switch>
           <Route path='/newrecipe' render={this.renderNewRecipeForm} />
           <Route path='/myrecipes' render={this.renderMyRecipes} />
@@ -201,14 +188,6 @@ class App extends React.Component {
           <Route path='/login' render={this.renderLogIn} />
           <Route path='/home' render={this.renderHome} />
         </Switch>
-
-        {/* <p></p>
-        <RecipeContainer 
-          recipes={this.filteredRecipesArray()}  
-          deleteRecipeFromArray={this.deleteRecipeFromArray}
-          logged_in={logged_in}
-          user_id={user_id}
-        /> */}
       </div>
     );
   } 
