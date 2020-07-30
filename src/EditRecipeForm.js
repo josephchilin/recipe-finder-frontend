@@ -14,7 +14,8 @@ class EditRecipeForm extends Component {
     cuisine_id: 29,
     cuisineList: [],
     new_recipe_object: "",
-    ingredient_counter: []
+    ingredient_counter: [],
+    submitted: false
   }
 
   componentDidMount(){
@@ -65,6 +66,9 @@ class EditRecipeForm extends Component {
     .then((newRecipe) => {
       console.log(newRecipe, "AFTER EDIT RECIPE PATCH FETCH")
       this.props.updateRecipeArray();
+      this.setState({
+        submitted: true
+      })
     //   this.props.addNewRecipeToArray(newRecipe);
 
     //   this.setState({
@@ -72,6 +76,10 @@ class EditRecipeForm extends Component {
     //   })
     })
 
+  }
+  
+  handleRedirect = () => {
+    this.props.redirectToMyRecipes()
   }
 
 //   handleClick = (evt) => {
@@ -153,6 +161,13 @@ class EditRecipeForm extends Component {
           <input className="form-button" type="submit" value="Edit Your Recipe" />
         </form>
           <p></p>
+          {
+            this.state.submitted
+                ?
+            "Recipe Updated!"
+                :
+            null
+          }
           {/* <div className="ingredient-form-container">
               <button className="form-button" onClick={this.handleClick}>New Ingredient</button>
                 <ul>
@@ -164,6 +179,16 @@ class EditRecipeForm extends Component {
                   })}
                 </ul>
           </div> */}
+          <p></p>
+        <div>
+         {
+            this.state.submitted
+                ?
+                <button className="form-button" onClick={this.handleRedirect}>View Updated Recipe</button>
+                :
+                null
+          }
+        </div>
 
         </div>
       </div>

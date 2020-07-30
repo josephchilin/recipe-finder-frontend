@@ -123,6 +123,7 @@ class App extends React.Component {
     updateRecipeArray={this.updateRecipeArray}
     currentRecipe={currentRecipe}
     user_id={user_id}
+    redirectToMyRecipes={this.redirectToMyRecipes}
     />
   }
 
