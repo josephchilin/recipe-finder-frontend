@@ -11,7 +11,7 @@ class EditRecipeForm extends Component {
     time: "",
     user_id: "",
     instruction: "",
-    cuisine_id: 13,
+    cuisine_id: 29,
     cuisineList: [],
     new_recipe_object: "",
     ingredient_counter: []

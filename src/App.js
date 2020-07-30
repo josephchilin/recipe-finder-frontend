@@ -89,6 +89,10 @@ class App extends React.Component {
 
   }
 
+  redirectToMyRecipes = () => {
+    this.props.history.push('/myrecipes')
+  }
+
   changeSearchTerm = (termFromSearch) => {
     this.setState({
       searchTerm: termFromSearch
@@ -107,6 +111,7 @@ class App extends React.Component {
     return <NewRecipeForm 
     addNewRecipeToArray={this.addNewRecipeToArray}
     updateRecipeArray={this.updateRecipeArray}
+    redirectToMyRecipes={this.redirectToMyRecipes}
     user_id={user_id}
     />
   }
@@ -135,11 +140,13 @@ class App extends React.Component {
   }
 
   renderHome = (routerProps) => {
-    const {searchTerm, logged_in, user_id} = this.state
+    const {searchTerm, logged_in, user_id, user_name} = this.state
     return <div>
       <SearchBar 
         searchTerm={searchTerm}
         changeSearchTerm={this.changeSearchTerm}
+        logged_in={logged_in}
+        user_name={user_name}
       />
       <RecipeContainer 
         recipes={this.filteredRecipesArray()}  
@@ -179,13 +186,13 @@ class App extends React.Component {
         <p></p>
         <h1 className="app-title">ReciPLS</h1>
         <p></p>
-        {
+        {/* {
           logged_in
           ?
           <p><b>Welcome {user_name}!</b></p> //ADD LOGOUT BUTTON AND FUNCTION TO SET STATE TO LOGGED OUT
           :
           null
-        }
+        } */}
         <Switch>
           <Route path='/newrecipe' render={this.renderNewRecipeForm} />
           <Route path='/myrecipes' render={this.renderMyRecipes} />

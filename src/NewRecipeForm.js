@@ -10,10 +10,11 @@ class NewRecipeForm extends Component {
     time: "",
     user_id: "",
     instruction: "",
-    cuisine_id: 13,
+    cuisine_id: 29,
     cuisineList: [],
     new_recipe_object: "",
-    ingredient_counter: []
+    ingredient_counter: [],
+    submitted: false
   }
 
   componentDidMount(){
@@ -67,7 +68,8 @@ class NewRecipeForm extends Component {
       this.props.addNewRecipeToArray(newRecipe);
 
       this.setState({
-        new_recipe_object: newRecipe
+        new_recipe_object: newRecipe,
+        submitted: true
       })
     })
 
@@ -75,9 +77,13 @@ class NewRecipeForm extends Component {
 
   handleClick = (evt) => {
     this.setState({
-      ingredient_counter: [...this.state.ingredient_counter, 1]
+      ingredient_counter: [...this.state.ingredient_counter, 1],
       // console.log(this.state.ingredient_counter)
     })
+  }
+
+  handleRedirect = () => {
+    this.props.redirectToMyRecipes()
   }
 
   render() {
@@ -153,8 +159,22 @@ class NewRecipeForm extends Component {
           <input className="form-button" type="submit" value="Create New Recipe" />
         </form>
           <p></p>
+          {
+            this.state.submitted
+                ?
+            "Recipe Added!"
+                :
+            null
+          }
+          <p></p>
           <div className="ingredient-form-container">
+          {
+            this.state.submitted
+                ?
               <button className="form-button" onClick={this.handleClick}>New Ingredient</button>
+              :
+              null
+          }
                 <ul>
                   {this.state.ingredient_counter.map(item => {
                     return <NewIngredientForm 
@@ -164,6 +184,13 @@ class NewRecipeForm extends Component {
                   })}
                 </ul>
           </div>
+          {
+            this.state.submitted
+                ?
+                <button className="form-button" onClick={this.handleRedirect}>View New Recipe</button>
+                :
+                null
+          }
 
         </div>
       </div>
