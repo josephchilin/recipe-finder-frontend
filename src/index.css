@@ -147,7 +147,7 @@ h3 {
 }
 
 .recipe-form {
-  /* text-align: left; */
+  padding-bottom: 50px;
 }
 
 .recipe-form-container {
@@ -155,6 +155,7 @@ h3 {
   align-items: center;
   justify-content: center;
   padding-right: 8px;
+  padding-top: 15px;
 }
 
 .ingredient-form {

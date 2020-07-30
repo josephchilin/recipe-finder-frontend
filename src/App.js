@@ -174,7 +174,7 @@ class App extends React.Component {
 
 
   render () {
-    const {logged_in, user_name} = this.state
+    const {logged_in} = this.state
     // console.log(this.state, "APP STATE")
 
     return (

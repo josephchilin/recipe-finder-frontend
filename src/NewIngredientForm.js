@@ -9,7 +9,7 @@ class NewIngredientForm extends Component {
     ingredient_id: "",
     quantity: "",
     measurement_type: "",
- 
+    submitted: false
   }
 
   componentDidMount() {
@@ -22,17 +22,12 @@ class NewIngredientForm extends Component {
         ingredientList: arrayOfIngredients
       })
     })
-    // this.setState({
-    //   recipe_id: this.props.id
-    // })
   }
 
   handleInput = (evt) => {
-
     this.setState({
       [evt.target.name]: evt.target.value
     })
-
   }
 
   handleSubmit = (evt) => {
@@ -59,6 +54,9 @@ class NewIngredientForm extends Component {
     .then(r => r.json())
     .then((newIngredient) => {
       this.props.updateRecipeArray();
+      this.setState({ 
+        submitted: true
+      })
     // console.log(newIngredient, "FETCH POST NEW INGREDIENT")
     })
 
@@ -67,51 +65,59 @@ class NewIngredientForm extends Component {
   render() {
       // console.log(this.props, "INGREDIENT FORM PROPS")
     return (
-<div className="recipe-form-container">
+      <div className="recipe-form-container">
 
-      <div className="ingredient-form">
-        <p></p>
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="f_ingredient_name">Name: </label>
-        <input
-          type="text"
-          name="name"
-          id="f_ingredient_name"
-          autoComplete="off"
-          value={this.state.name}
-          placeholder="What is your ingredient called?"
-          size="60"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <label htmlFor="f_ingredient_quantity">Quantity: </label>
-        <input
-          type="integer"
-          name="quantity"
-          id="f_ingredient_quantity"
-          autoComplete="off"
-          value={this.state.quantity}
-          placeholder="How much of this ingredient is needed?"
-          size="57"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <label htmlFor="f_ingredient_measurement_type">Measurement Type: </label>
-        <input
-          type="integer"
-          name="measurement_type"
-          id="f_ingredient_measurement_type"
-          autoComplete="off"
-          value={this.state.measurement_type}
-          placeholder="What is the measurement type? (ex. cups, ounces)"
-          size="46"
-          onChange={this.handleInput}
-        />
-        <p></p>
-        <input className="form-button" type="submit" value="Add New Ingredient" />
-        <p></p>
-      </form>
-      </div>
+        <div className="ingredient-form">
+            <p></p>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="f_ingredient_name">Name: </label>
+            <input
+              type="text"
+              name="name"
+              id="f_ingredient_name"
+              autoComplete="off"
+              value={this.state.name}
+              placeholder="What is your ingredient called?"
+              size="60"
+              onChange={this.handleInput}
+            />
+            <p></p>
+            <label htmlFor="f_ingredient_quantity">Quantity: </label>
+            <input
+              type="integer"
+              name="quantity"
+              id="f_ingredient_quantity"
+              autoComplete="off"
+              value={this.state.quantity}
+              placeholder="How much of this ingredient is needed?"
+              size="57"
+              onChange={this.handleInput}
+            />
+            <p></p>
+            <label htmlFor="f_ingredient_measurement_type">Measurement Type: </label>
+            <input
+              type="integer"
+              name="measurement_type"
+              id="f_ingredient_measurement_type"
+              autoComplete="off"
+              value={this.state.measurement_type}
+              placeholder="What is the measurement type? (ex. cups, ounces)"
+              size="46"
+              onChange={this.handleInput}
+            />
+            <p></p>
+            <input className="form-button" type="submit" value="Add New Ingredient" />
+            <p></p>
+            {
+            this.state.submitted
+                ?
+            "Ingredient Added!"
+                :
+            null
+          }
+          </form>
+        </div>
+
       </div>
 
     );
