@@ -4,6 +4,8 @@ import IngredientItem from './IngredientItem'
 class RecipeItem extends React.Component {
     state = {
         ingredientlist: [],
+        clicked: false,
+        eric: "https://i.imgur.com/8v2somB.png",
     }
 
     componentDidMount(){
@@ -34,11 +36,17 @@ class RecipeItem extends React.Component {
         // console.log(this.props, "EDIT RECIPE PROPS")
     }
     
+    handleImageClick = (evt) => {
+        this.setState({
+            clicked: !this.state.clicked
+        })
+                    console.log(this.state.clicked, "clicked")
+    }
     render(){
         // console.log(this.props, "INSIDE RECIPE ITEM")
 
         let {name, instruction, serving_size, time, image_url, user} = this.props.recipe
-
+        let {eric, clicked} = this.state
         let {user_id} = this.props
 
         let renderIngredientArray = this.props.recipe.recipe_ingredients.map((recipeIngredientPOJO) => {  
@@ -65,7 +73,14 @@ class RecipeItem extends React.Component {
                         </div>
                             <p></p> 
                         <div className="recipe-img-ing">
-                            <img src={image_url} alt={name} width="400"/>
+                            { 
+                            clicked 
+                            ? 
+                            <img src={eric} alt={name} width="400" onClick={this.handleImageClick}/>
+                            : 
+                            <img src={image_url} alt={name} width="400" onClick={this.handleImageClick}/> 
+                            }
+                            {/* <img src={eric} alt={name} width="400" onClick={this.handleImageClick}/> */}
                               <div className="ingredient-container">
                                   <div className="ingredients-name">
                                     <h3>Ingredients:</h3>
