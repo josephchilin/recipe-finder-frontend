@@ -179,7 +179,7 @@ class App extends React.Component {
         logOut={this.logOut}
         />
         <p></p>
-        <h1 className="app-title">ReciPLS</h1>
+        <h1 className="app-title">Recette</h1>
         <p></p>
         <Switch>
           <Route path='/newrecipe' render={this.renderNewRecipeForm} />
